@@ -1,0 +1,224 @@
+@use "./reset";
+@use "./var" as *;
+
+body {
+    background: $colorLightGray;
+    font-family: $fontMain;
+
+    header {
+        z-index: 100;
+        position: fixed;
+        top: 40px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        .headerInner {
+            height: 80px;
+            width: 1000px;
+            margin-inline: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            .headerNav {
+                z-index: 11;
+                position: relative;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+                padding: 12px 12px;
+                border-radius: 50vh;
+                background: #fff;
+
+                .currentItem {
+                    z-index: 12;
+                    position: absolute;
+                    left: 12px;
+                    width: calc((100% - 24px) / 6);
+                    height: calc(100% - 24px);
+                    background: #000;
+                    border-radius: 50vh;
+                }
+
+                .headerNavItem {
+                    z-index: 13;
+                    cursor: pointer;
+                    width: calc(100% / 6);
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 50vh;
+
+                    &--current {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    main {
+        margin-top: 160px;
+
+        .mainWrapper {
+            width: 1400px;
+            margin-inline: auto;
+        }
+
+        #introduction {
+
+            .sectionInner {
+                padding-top: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .introductionImageWrapper {
+                    width: 50%;
+                    height: auto;
+                    aspect-ratio: 1 / 1;
+                    object-fit: cover;
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                        border-radius: $borderRadiusMain;
+                    }
+                }
+
+                .introductionTextAreaWrapper {
+                    width: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    .introductionTextArea {
+
+                        .introductionEnglishName {
+                            font-size: 32px;
+                            font-family: $fontSub;
+                            color: $colorDarkGray;
+                        }
+
+                        .introductionJapaneseName {
+                            font-size: 88px;
+                            font-weight: bold;
+
+                            span {
+                                color: $colorMain;
+                            }
+                        }
+
+                        .introductionProfile {
+                            margin-top: 24px;
+                        }
+                    }
+                }
+            }
+        }
+
+        #skills {
+            .sectionInner {
+                .skillsCardArea {
+                    margin-top: 64px;
+                    display: flex;
+                    flex-wrap: wrap;
+                    align-items: center;
+                    justify-content: center;
+                    column-gap: 48px;
+                    row-gap: 64px;
+
+                    .skillsCard {
+                        position: relative;
+                        width: calc((100% - 48px) / 2);
+                        aspect-ratio: 5 / 2;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding: 24px 0 24px 24px;
+                        border-radius: $borderRadiusMain;
+                        background: #fff;
+                        border: 1px solid $colorBlack;
+                        box-shadow: 0px 5px 0px 0px $colorBlack;
+
+                        .skillsCardExperience {
+                            position: absolute;
+                            top: 0;
+                            left: 24px;
+                            transform: translateY(-50%);
+                            display: flex;
+                            align-items: center;
+                            gap: 6px;
+                            padding: 8px 16px 4px 16px;
+                            border-radius: $borderRadiusSmall;
+                            background: $colorMain;
+                            font-family: $fontSub;
+                            color: #fff;
+
+                            .skillsCardExperienceNum {
+                                line-height: 1;
+                                font-size: 32px;
+                            }
+
+                            .skillsCardExperienceText {
+                                line-height: 1;
+                                font-size: 16px;
+                            }
+                        }
+
+                        .skillsCardTextArea {
+
+                            .skillsCardEnglishTitle {
+                                font-family: $fontSub;
+                                color: $colorMain;
+                            }
+
+                            .skillsCardTitle {
+                                font-size: 48px;
+                                font-weight: 400;
+                            }
+
+                            .skillsCardDescription {
+                                margin-top: 16px;
+                            }
+                        }
+
+                        .skillsCardIconArea {
+                            flex: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+
+                            .emoji {
+                                font-size: 88px;
+                            }
+                        }
+                    }
+
+                    .skillsCard--movie {
+                        .skillsCardExperience {
+                            background: #A045AB;
+                        }
+                    }
+
+                    .skillsCard--lecturer,
+                    .skillsCard--sns {
+                        .skillsCardExperience {
+                            background: $colorMain;
+                        }
+                    }
+
+                    .skillsCard--web {
+                        .skillsCardExperience {
+                            background: #5BAE70;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

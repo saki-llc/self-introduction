@@ -1,0 +1,68 @@
+@use "./reset";
+@use "./var" as *;
+
+// フォント
+* {
+    font-feature-settings: "palt";
+}
+
+body {
+    font-family: $fontMain;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+    color: $colorBlack;
+}
+
+h1,
+h2,
+h3 {
+    line-height: 1;
+}
+
+main {
+    position: relative;
+}
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.brSpOnly {
+    display: none;
+
+    @media screen and (width <=480px) {
+        display: inline;
+    }
+}
+
+.sectionInner {
+    width: 100%;
+    margin-inline: auto;
+    padding-block: 80px;
+}
+
+.sectionTitleGroup {
+    text-align: center;
+
+
+    .sectionSubTitle {
+        line-height: 1;
+        font-family: $fontSub;
+        font-size: 64px;
+        font-weight: bold;
+    }
+
+
+    .sectionTitle {
+        margin-top: 8px;
+        font-weight: bold;
+        color: $colorMain;
+    }
+}
+
+.emoji {
+    font-family: "Noto Color Emoji", sans-serif;
+}
