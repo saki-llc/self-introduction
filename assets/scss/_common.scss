@@ -40,6 +40,7 @@ a {
 
 .sectionInner {
     width: 100%;
+    max-width: 1400px;
     margin-inline: auto;
     padding-block: 80px;
 }
@@ -64,5 +65,9 @@ a {
 }
 
 .emoji {
-    font-family: "Noto Color Emoji", sans-serif;
+    font-family: $fontEmoji;
+}
+
+.brLineHeight1 {
+    line-height: 1.2;
 }

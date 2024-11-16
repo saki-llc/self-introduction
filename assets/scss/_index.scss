@@ -63,11 +63,6 @@ body {
     main {
         margin-top: 160px;
 
-        .mainWrapper {
-            width: 1400px;
-            margin-inline: auto;
-        }
-
         #introduction {
 
             .sectionInner {
@@ -220,5 +215,255 @@ body {
                 }
             }
         }
+
+        #currentWorks {
+            // clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
+            background-size: 200% 200%;
+            animation: bgGradient 8s ease infinite;
+            border-radius: $borderRadiusMain;
+            overflow: hidden;
+
+            @keyframes bgGradient {
+                0% {
+                    background-position: 0% 50%;
+                }
+
+                50% {
+                    background-position: 100% 50%;
+                }
+
+                100% {
+                    background-position: 0% 50%;
+                }
+            }
+
+            .currentWorksBgNoise {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.1;
+                filter: brightness(5);
+            }
+
+            .sectionInner {
+                display: flex;
+                flex-direction: column;
+                gap: 64px;
+                width: 100%;
+                height: 100%;
+                padding-top: 180px;
+                z-index: 1;
+
+                .currentWorksMainArea {
+                    display: flex;
+                    height: 100%;
+                    width: 100%;
+                    max-width: 1400px;
+                    margin-inline: auto;
+                    align-items: center;
+                    justify-content: center;
+
+                    .currentWorksMainAreaLeft {
+                        width: auto;
+                        height: 100%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 40px;
+
+
+                        .currentJobLogoWrapper {
+                            cursor: pointer;
+                            width: 72px;
+                            height: 72px;
+                            aspect-ratio: 1 / 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            border-radius: $borderRadiusSmall;
+                            background: #fff;
+                            border: 1px solid $colorBlack;
+                            opacity: 0.5;
+
+
+                            img {
+                                width: 70%;
+                                aspect-ratio: 1 / 1;
+                                object-fit: cover;
+                            }
+                        }
+
+                        .currentJobLogoWrapper.currentJobLogoWrapper--active {
+                            // cursor: default;
+                            width: 120px;
+                            height: 120px;
+                            opacity: 1;
+                        }
+                    }
+
+                    .currentWorksMainAreaRight {
+                        flex: 1;
+                        height: 100%;
+                        margin-left: 100px;
+
+                        .currentWorksDetail {
+                            display: none;
+                            width: 100%;
+                            height: 100%;
+                            flex-direction: column;
+                            justify-content: center;
+                            gap: 40px;
+
+                            &--active {
+                                display: flex;
+                            }
+
+                            .currentWorksDetailTitle {
+                                font-size: 64px;
+                                font-weight: 500;
+
+                                span {
+                                    color: $colorMain;
+                                }
+                            }
+
+                            .currentWorksDetailDescription {
+                                br {
+                                    line-height: 1.2;
+                                }
+                            }
+
+                            .currentWorksSkillsList {
+                                display: flex;
+                                flex-wrap: wrap;
+                                gap: 16px;
+
+
+                                .currentWorksSkillsItem {
+                                    padding: 0px 16px 2px 16px;
+                                    border-radius: 50vh;
+                                    border: 1px solid $colorBlack;
+                                }
+                            }
+
+                            .currentWorksLink {
+                                cursor: pointer;
+                                padding-block: 6px 8px;
+                                width: 100%;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: $borderRadiusSmall;
+                                background: $colorBlack;
+                                color: #fff;
+
+                                .currentWorksLinkText {
+                                    font-weight: 600;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        #career {
+            .sectionInner {
+
+                .sectionTitleGroup {
+                    text-align: start;
+                }
+
+                .careerHighlightList {
+                    margin-top: 32px;
+                    display: flex;
+                    align-items: center;
+                    gap: 16px;
+
+                    .careerHighlightItem {
+                        padding: 0px 16px 2px 16px;
+                        border-radius: 50vh;
+                        border: 1px solid $colorBlack;
+                        font-size: 16px;
+                    }
+                }
+
+
+                .careerTimelineList {
+                    margin-top: 40px;
+
+                    .careerTimelineItem {
+                        width: 100%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        padding-inline: 32px;
+                        padding-block: 40px;
+                        border-top: 1px solid rgba(0, 0, 0, 0.4);
+
+                        &::after {
+                            font-size: 100px;
+                            line-height: 1;
+                            font-family: $fontEmoji;
+                        }
+
+                        .careerTimelineItemInner {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                            gap: 16px;
+
+                            .careerTimelineEvent {
+                                font-size: 32px;
+                            }
+                        }
+                    }
+
+                    .careerTimelineItem:nth-child(1)::after {
+                        content: "🏝️";
+                    }
+
+                    .careerTimelineItem:nth-child(2)::after {
+                        content: "🏫";
+                    }
+
+                    .careerTimelineItem:nth-child(3)::after {
+                        content: "🗼";
+                    }
+
+                    .careerTimelineItem:nth-child(4)::after {
+                        content: "🖥️";
+                    }
+
+                    .careerTimelineItem:nth-child(5)::after {
+                        content: "🏢";
+                    }
+
+                    .careerTimelineItem:nth-child(6)::after {
+                        content: "✈️";
+                    }
+                }
+            }
+        }
+
+        #works {
+            .sectionInner {}
+        }
+    }
+
+    footer {
+        padding-block: 80px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
     }
 }
