@@ -219,8 +219,9 @@ body {
         #currentWorks {
             // clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
             position: relative;
-            width: 100%;
-            height: 100vh;
+            width: calc(100% - 48px);
+            height: calc(100vh - 48px);
+            margin-inline: auto;
             background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
             background-size: 200% 200%;
             animation: bgGradient 8s ease infinite;
@@ -415,6 +416,11 @@ body {
                             font-family: $fontEmoji;
                         }
 
+
+                        &:last-child {
+                            padding-bottom: 0;
+                        }
+
                         .careerTimelineItemInner {
                             width: 100%;
                             display: flex;
@@ -455,15 +461,97 @@ body {
         }
 
         #works {
-            .sectionInner {}
+            .sectionInner {
+                .worksCardArea {
+                    margin-top: 64px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    .worksCard {
+                        pointer-events: none;
+                        width: 40%;
+                        height: auto;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        gap: 24px;
+                        padding: 24px;
+                        border-radius: $borderRadiusMain;
+                        background: #fff;
+                        border: 1px solid $colorBlack;
+                        box-shadow: 0px 5px 0px 0px $colorBlack;
+
+                        transform: scale(0.6);
+
+                        &--active {
+                            pointer-events: auto;
+                            transform: scale(1);
+                        }
+
+                        .worksCardThumbnailWrapper {
+                            width: 100%;
+                            height: auto;
+                            aspect-ratio: 16 / 9;
+
+                            .worksCardThumbnail {
+                                width: 100%;
+                                height: 100%;
+                                aspect-ratio: 16 / 9;
+                                object-fit: cover;
+                                border-radius: $borderRadiusMain;
+                            }
+                        }
+
+                        .worksCardTitleArea {
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+
+                            .worksCardClientName {
+                                font-weight: bold;
+                                color: $colorMain;
+                            }
+
+                            .worksCardTitle {
+                                font-size: 32px;
+                                line-height: 1.5;
+                                text-align: center;
+                            }
+                        }
+
+                        .worksCardDescription {}
+                    }
+                }
+            }
         }
     }
 
     footer {
-        padding-block: 80px;
+        height: 400px;
+        padding-block: 40px 16px;
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: space-between;
+        background: $colorBlack;
+
+        .sectionTitleGroup {
+            color: #fff;
+        }
+
+        .snsIconList {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            .mailIconItem {
+                cursor: pointer;
+            }
+        }
+
+        .copyright {
+            color: #fff;
+        }
     }
 }
