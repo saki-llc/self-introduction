@@ -404,6 +404,11 @@ body {
   line-height: 1.8;
   color: #333;
 }
+@media screen and (max-width: 1432px) {
+  body {
+    font-size: max(1.5vw, 16px);
+  }
+}
 
 h1,
 h2,
@@ -429,11 +434,40 @@ a {
   }
 }
 
+.brUnderPcSmall {
+  display: none;
+}
+@media screen and (max-width: 1432px) {
+  .brUnderPcSmall {
+    display: inline;
+  }
+}
+
+.brUnderTablet {
+  display: none;
+}
+@media screen and (max-width: 900px) {
+  .brUnderTablet {
+    display: inline;
+  }
+}
+
 .sectionInner {
   width: 100%;
   max-width: 1400px;
   margin-inline: auto;
   padding-block: 80px;
+}
+@media screen and (max-width: 1432px) {
+  .sectionInner {
+    padding-inline: 32px;
+    padding-block: 40px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .sectionInner {
+    padding-inline: 16px;
+  }
 }
 
 .sectionTitleGroup {
@@ -469,14 +503,22 @@ body header {
   top: 40px;
   left: 50%;
   transform: translateX(-50%);
+  width: 100%;
 }
 body header .headerInner {
   height: 80px;
-  width: 1000px;
+  width: 100%;
+  max-width: 1000px;
   margin-inline: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+@media screen and (max-width: 1064px) {
+  body header .headerInner {
+    padding-inline: 32px;
+    font-size: 2vw;
+  }
 }
 body header .headerInner .headerNav {
   z-index: 11;
@@ -521,12 +563,27 @@ body main #introduction .sectionInner {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 1432px) {
+  body main #introduction .sectionInner {
+    gap: 32px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #introduction .sectionInner {
+    flex-direction: column;
+  }
+}
 body main #introduction .sectionInner .introductionImageWrapper {
   width: 50%;
   height: auto;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
+}
+@media screen and (max-width: 700px) {
+  body main #introduction .sectionInner .introductionImageWrapper {
+    width: 100%;
+  }
 }
 body main #introduction .sectionInner .introductionImageWrapper img {
   width: 100%;
@@ -541,14 +598,39 @@ body main #introduction .sectionInner .introductionTextAreaWrapper {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 700px) {
+  body main #introduction .sectionInner .introductionTextAreaWrapper {
+    width: 100%;
+  }
+}
 body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionEnglishName {
   font-size: 32px;
   font-family: "Shrikhand", cursive;
   color: #707070;
 }
+@media screen and (max-width: 1432px) {
+  body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionEnglishName {
+    font-size: 2.5vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionEnglishName {
+    font-size: 4vw;
+  }
+}
 body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionJapaneseName {
   font-size: 88px;
   font-weight: bold;
+}
+@media screen and (max-width: 1432px) {
+  body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionJapaneseName {
+    font-size: 8vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionJapaneseName {
+    font-size: 14vw;
+  }
 }
 body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionJapaneseName span {
   color: #0089A7;
@@ -566,6 +648,11 @@ body main #skills .sectionInner .skillsCardArea {
        column-gap: 48px;
   row-gap: 64px;
 }
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea {
+    flex-direction: column;
+  }
+}
 body main #skills .sectionInner .skillsCardArea .skillsCard {
   position: relative;
   width: calc((100% - 48px) / 2);
@@ -573,11 +660,32 @@ body main #skills .sectionInner .skillsCardArea .skillsCard {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   padding: 24px 0 24px 24px;
   border-radius: 12px;
   background: #fff;
   border: 1px solid #333;
   box-shadow: 0px 5px 0px 0px #333;
+}
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard {
+    padding: 40px 16px 24px 16px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard::after {
+    content: "🎥";
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 40px;
+    line-height: 1;
+  }
 }
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardExperience {
   position: absolute;
@@ -605,21 +713,82 @@ body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea 
   font-family: "Shrikhand", cursive;
   color: #0089A7;
 }
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardEnglishTitle {
+    font-size: 3vw;
+  }
+}
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardTitle {
   font-size: 48px;
   font-weight: 400;
 }
+@media screen and (max-width: 1432px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardTitle {
+    font-size: max(3vw, 24px);
+  }
+}
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardTitle {
+    font-size: 7vw;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardTitle {
+    font-size: 8.5vw;
+    font-weight: bold;
+  }
+}
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardDescription {
   margin-top: 16px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+@media screen and (max-width: 1432px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardDescription {
+    font-size: 1.35vw;
+  }
+}
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardDescription {
+    font-size: 2.4vw;
+    margin-top: 32px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardTextArea .skillsCardDescription {
+    margin-top: 8px;
+    font-size: 16px;
+  }
 }
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea {
-  flex: 1;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: start;
+  width: 120px;
+}
+@media screen and (max-width: 1432px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea {
+    width: auto;
+    margin-right: 64px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea {
+    display: none;
+  }
 }
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea .emoji {
   font-size: 88px;
+}
+@media screen and (max-width: 1432px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea .emoji {
+    font-size: 5.5vw;
+  }
+}
+@media screen and (max-width: 900px) {
+  body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardIconArea .emoji {
+    font-size: 12vw;
+  }
 }
 body main #skills .sectionInner .skillsCardArea .skillsCard--movie .skillsCardExperience {
   background: #A045AB;
@@ -667,11 +836,16 @@ body main #currentWorks .currentWorksBgNoise {
 body main #currentWorks .sectionInner {
   display: flex;
   flex-direction: column;
-  gap: 64px;
-  width: 100%;
+  gap: 40px;
+  width: calc(100% - 120px);
   height: 100%;
-  padding-top: 180px;
+  padding-top: 140px;
   z-index: 1;
+}
+@media screen and (max-width: 1432px) {
+  body main #currentWorks .sectionInner {
+    width: calc(100% - 64px);
+  }
 }
 body main #currentWorks .sectionInner .currentWorksMainArea {
   display: flex;
@@ -682,6 +856,12 @@ body main #currentWorks .sectionInner .currentWorksMainArea {
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea {
+    flex-direction: column;
+    gap: 24px;
+  }
+}
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft {
   width: auto;
   height: 100%;
@@ -690,6 +870,11 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   align-items: center;
   justify-content: center;
   gap: 40px;
+}
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft {
+    flex-direction: row;
+  }
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper {
   cursor: pointer;
@@ -704,6 +889,12 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   border: 1px solid #333;
   opacity: 0.5;
 }
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper {
+    width: 52px;
+    height: 52px;
+  }
+}
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper img {
   width: 70%;
   aspect-ratio: 1/1;
@@ -715,10 +906,21 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   height: 120px;
   opacity: 1;
 }
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper.currentJobLogoWrapper--active {
+    width: 80px;
+    height: 80px;
+  }
+}
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight {
   flex: 1;
   height: 100%;
-  margin-left: 100px;
+  margin-left: 64px;
+}
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight {
+    margin-left: 0;
+  }
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail {
   display: none;
@@ -735,8 +937,19 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   font-size: 64px;
   font-weight: 500;
 }
+@media screen and (max-width: 1432px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksDetailTitle {
+    font-size: 6vw;
+    font-weight: bold;
+  }
+}
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksDetailTitle span {
   color: #0089A7;
+}
+@media screen and (max-width: 900px) {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksDetailDescription {
+    font-size: 2.2vw;
+  }
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksDetailDescription br {
   line-height: 1.2;
@@ -771,6 +984,7 @@ body main #career .sectionInner .sectionTitleGroup {
 body main #career .sectionInner .careerHighlightList {
   margin-top: 32px;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 16px;
 }
@@ -788,14 +1002,25 @@ body main #career .sectionInner .careerTimelineList .careerTimelineItem {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 40px;
   padding-inline: 32px;
   padding-block: 40px;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
+}
+@media screen and (max-width: 900px) {
+  body main #career .sectionInner .careerTimelineList .careerTimelineItem {
+    padding-inline: 0;
+  }
 }
 body main #career .sectionInner .careerTimelineList .careerTimelineItem::after {
   font-size: 100px;
   line-height: 1;
   font-family: "Apple Color Emoji", "Noto Color Emoji";
+}
+@media screen and (max-width: 1432px) {
+  body main #career .sectionInner .careerTimelineList .careerTimelineItem::after {
+    font-size: 8vw;
+  }
 }
 body main #career .sectionInner .careerTimelineList .careerTimelineItem:last-child {
   padding-bottom: 0;

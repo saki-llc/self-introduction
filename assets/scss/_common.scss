@@ -13,6 +13,10 @@ body {
     letter-spacing: 0.1em;
     line-height: 1.8;
     color: $colorBlack;
+
+    @media screen and (max-width: $pcSmallBreakPoint) {
+        font-size: max(1.5vw, 16px);
+    }
 }
 
 h1,
@@ -38,11 +42,36 @@ a {
     }
 }
 
+.brUnderPcSmall {
+    display: none;
+
+    @media screen and (max-width: $pcSmallBreakPoint) {
+        display: inline;
+    }
+}
+
+.brUnderTablet {
+    display: none;
+
+    @media screen and (max-width: $tabletBreakPoint) {
+        display: inline;
+    }
+}
+
 .sectionInner {
     width: 100%;
     max-width: 1400px;
     margin-inline: auto;
     padding-block: 80px;
+
+    @media screen and (max-width: $pcSmallBreakPoint) {
+        padding-inline: 32px;
+        padding-block: 40px;
+    }
+
+    @media screen and (max-width: $spBreakPoint) {
+        padding-inline: 16px;
+    }
 }
 
 .sectionTitleGroup {

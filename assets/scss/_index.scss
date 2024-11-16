@@ -11,14 +11,22 @@ body {
         top: 40px;
         left: 50%;
         transform: translateX(-50%);
+        width: 100%;
 
         .headerInner {
             height: 80px;
-            width: 1000px;
+            width: 100%;
+            max-width: 1000px;
             margin-inline: auto;
             display: flex;
             align-items: center;
             justify-content: center;
+
+            @media screen and (max-width: 1064px) {
+                padding-inline: 32px;
+                font-size: 2vw;
+            }
+
 
             .headerNav {
                 z-index: 11;
@@ -71,11 +79,23 @@ body {
                 align-items: center;
                 justify-content: center;
 
+                @media screen and (max-width: $pcSmallBreakPoint) {
+                    gap: 32px;
+                }
+
+                @media screen and (max-width: $spBreakPoint) {
+                    flex-direction: column;
+                }
+
                 .introductionImageWrapper {
                     width: 50%;
                     height: auto;
                     aspect-ratio: 1 / 1;
                     object-fit: cover;
+
+                    @media screen and (max-width: $spBreakPoint) {
+                        width: 100%;
+                    }
 
                     img {
                         width: 100%;
@@ -91,17 +111,39 @@ body {
                     align-items: center;
                     justify-content: center;
 
+                    @media screen and (max-width: $spBreakPoint) {
+                        width: 100%;
+                    }
+
                     .introductionTextArea {
 
                         .introductionEnglishName {
                             font-size: 32px;
                             font-family: $fontSub;
                             color: $colorDarkGray;
+
+                            @media screen and (max-width: $pcSmallBreakPoint) {
+                                font-size: 2.5vw;
+                            }
+
+
+                            @media screen and (max-width: $spBreakPoint) {
+                                font-size: 4vw;
+                            }
                         }
 
                         .introductionJapaneseName {
                             font-size: 88px;
                             font-weight: bold;
+
+                            @media screen and (max-width: $pcSmallBreakPoint) {
+                                font-size: 8vw;
+                            }
+
+
+                            @media screen and (max-width: $spBreakPoint) {
+                                font-size: 14vw;
+                            }
 
                             span {
                                 color: $colorMain;
@@ -127,6 +169,10 @@ body {
                     column-gap: 48px;
                     row-gap: 64px;
 
+                    @media screen and (max-width: $tabletBreakPoint) {
+                        flex-direction: column;
+                    }
+
                     .skillsCard {
                         position: relative;
                         width: calc((100% - 48px) / 2);
@@ -134,11 +180,32 @@ body {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        gap: 24px;
                         padding: 24px 0 24px 24px;
                         border-radius: $borderRadiusMain;
                         background: #fff;
                         border: 1px solid $colorBlack;
                         box-shadow: 0px 5px 0px 0px $colorBlack;
+
+                        @media screen and (max-width: $tabletBreakPoint) {
+                            width: 100%;
+                        }
+
+
+                        @media screen and (max-width: $spBreakPoint) {
+                            padding: 40px 16px 24px 16px;
+                        }
+
+                        @media screen and (max-width: $spBreakPoint) {
+                            &::after {
+                                content: "🎥";
+                                position: absolute;
+                                top: 12px;
+                                right: 12px;
+                                font-size: 40px;
+                                line-height: 1;
+                            }
+                        }
 
                         .skillsCardExperience {
                             position: absolute;
@@ -170,26 +237,78 @@ body {
                             .skillsCardEnglishTitle {
                                 font-family: $fontSub;
                                 color: $colorMain;
+
+                                @media screen and (max-width: $tabletBreakPoint) {
+                                    font-size: 3vw;
+                                }
                             }
 
                             .skillsCardTitle {
                                 font-size: 48px;
                                 font-weight: 400;
+
+                                @media screen and (max-width: $pcSmallBreakPoint) {
+                                    font-size: max(3vw, 24px);
+                                }
+
+                                @media screen and (max-width: $tabletBreakPoint) {
+                                    font-size: 7vw;
+                                }
+
+
+                                @media screen and (max-width: $spBreakPoint) {
+                                    font-size: 8.5vw;
+                                    font-weight: bold;
+                                }
                             }
 
                             .skillsCardDescription {
                                 margin-top: 16px;
+                                word-break: keep-all;
+                                overflow-wrap: break-word;
+
+                                @media screen and (max-width: $pcSmallBreakPoint) {
+                                    font-size: 1.35vw;
+                                }
+
+                                @media screen and (max-width: $tabletBreakPoint) {
+                                    font-size: 2.4vw;
+                                    margin-top: 32px;
+                                }
+
+
+                                @media screen and (max-width: $spBreakPoint) {
+                                    margin-top: 8px;
+                                    font-size: 16px;
+                                }
                             }
                         }
 
                         .skillsCardIconArea {
-                            flex: 1;
                             display: flex;
                             align-items: center;
-                            justify-content: center;
+                            justify-content: start;
+                            width: 120px;
+
+                            @media screen and (max-width: $pcSmallBreakPoint) {
+                                width: auto;
+                                margin-right: 64px;
+                            }
+
+                            @media screen and (max-width: $spBreakPoint) {
+                                display: none;
+                            }
 
                             .emoji {
                                 font-size: 88px;
+
+                                @media screen and (max-width: $pcSmallBreakPoint) {
+                                    font-size: 5.5vw;
+                                }
+
+                                @media screen and (max-width: $tabletBreakPoint) {
+                                    font-size: 12vw;
+                                }
                             }
                         }
                     }
@@ -256,11 +375,15 @@ body {
             .sectionInner {
                 display: flex;
                 flex-direction: column;
-                gap: 64px;
-                width: 100%;
+                gap: 40px;
+                width: calc(100% - 120px);
                 height: 100%;
-                padding-top: 180px;
+                padding-top: 140px;
                 z-index: 1;
+
+                @media screen and (max-width: $pcSmallBreakPoint) {
+                    width: calc(100% - 64px);
+                }
 
                 .currentWorksMainArea {
                     display: flex;
@@ -271,6 +394,11 @@ body {
                     align-items: center;
                     justify-content: center;
 
+                    @media screen and (max-width: $tabletBreakPoint) {
+                        flex-direction: column;
+                        gap: 24px;
+                    }
+
                     .currentWorksMainAreaLeft {
                         width: auto;
                         height: 100%;
@@ -279,6 +407,10 @@ body {
                         align-items: center;
                         justify-content: center;
                         gap: 40px;
+
+                        @media screen and (max-width: $tabletBreakPoint) {
+                            flex-direction: row;
+                        }
 
 
                         .currentJobLogoWrapper {
@@ -294,6 +426,11 @@ body {
                             border: 1px solid $colorBlack;
                             opacity: 0.5;
 
+                            @media screen and (max-width: $tabletBreakPoint) {
+                                width: 52px;
+                                height: 52px;
+                            }
+
 
                             img {
                                 width: 70%;
@@ -307,13 +444,22 @@ body {
                             width: 120px;
                             height: 120px;
                             opacity: 1;
+
+                            @media screen and (max-width: $tabletBreakPoint) {
+                                width: 80px;
+                                height: 80px;
+                            }
                         }
                     }
 
                     .currentWorksMainAreaRight {
                         flex: 1;
                         height: 100%;
-                        margin-left: 100px;
+                        margin-left: 64px;
+
+                        @media screen and (max-width: $tabletBreakPoint) {
+                            margin-left: 0;
+                        }
 
                         .currentWorksDetail {
                             display: none;
@@ -331,12 +477,21 @@ body {
                                 font-size: 64px;
                                 font-weight: 500;
 
+                                @media screen and (max-width: $pcSmallBreakPoint) {
+                                    font-size: 6vw;
+                                    font-weight: bold;
+                                }
+
                                 span {
                                     color: $colorMain;
                                 }
                             }
 
                             .currentWorksDetailDescription {
+                                @media screen and (max-width: $tabletBreakPoint) {
+                                    font-size: 2.2vw;
+                                }
+
                                 br {
                                     line-height: 1.2;
                                 }
@@ -386,6 +541,7 @@ body {
                 .careerHighlightList {
                     margin-top: 32px;
                     display: flex;
+                    flex-wrap: wrap;
                     align-items: center;
                     gap: 16px;
 
@@ -406,14 +562,24 @@ body {
                         display: flex;
                         align-items: center;
                         justify-content: space-between;
+                        gap: 40px;
                         padding-inline: 32px;
                         padding-block: 40px;
                         border-top: 1px solid rgba(0, 0, 0, 0.4);
+
+                        @media screen and (max-width: $tabletBreakPoint) {
+                            padding-inline: 0;
+                        }
 
                         &::after {
                             font-size: 100px;
                             line-height: 1;
                             font-family: $fontEmoji;
+
+
+                            @media screen and (max-width: $pcSmallBreakPoint) {
+                                font-size: 8vw;
+                            }
                         }
 
 
