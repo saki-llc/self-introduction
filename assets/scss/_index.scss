@@ -576,10 +576,15 @@ body {
                             line-height: 1;
                             font-family: $fontEmoji;
 
-
                             @media screen and (max-width: $pcSmallBreakPoint) {
                                 font-size: 8vw;
+
                             }
+
+                            @media screen and (max-width: $spBreakPoint) {
+                                display: none !important;
+                            }
+
                         }
 
 
@@ -595,32 +600,37 @@ body {
 
                             .careerTimelineEvent {
                                 font-size: 32px;
+
+                                @media screen and (max-width: $spBreakPoint) {
+                                    font-size: 6vw;
+                                    font-weight: bold;
+                                }
                             }
                         }
-                    }
 
-                    .careerTimelineItem:nth-child(1)::after {
-                        content: "🏝️";
-                    }
+                        .careerTimelineItem:nth-child(1)::after {
+                            content: "🏝️";
+                        }
 
-                    .careerTimelineItem:nth-child(2)::after {
-                        content: "🏫";
-                    }
+                        .careerTimelineItem:nth-child(2)::after {
+                            content: "🏫";
+                        }
 
-                    .careerTimelineItem:nth-child(3)::after {
-                        content: "🗼";
-                    }
+                        .careerTimelineItem:nth-child(3)::after {
+                            content: "🗼";
+                        }
 
-                    .careerTimelineItem:nth-child(4)::after {
-                        content: "🖥️";
-                    }
+                        .careerTimelineItem:nth-child(4)::after {
+                            content: "🖥️";
+                        }
 
-                    .careerTimelineItem:nth-child(5)::after {
-                        content: "🏢";
-                    }
+                        .careerTimelineItem:nth-child(5)::after {
+                            content: "🏢";
+                        }
 
-                    .careerTimelineItem:nth-child(6)::after {
-                        content: "✈️";
+                        .careerTimelineItem:nth-child(6)::after {
+                            content: "✈️";
+                        }
                     }
                 }
             }

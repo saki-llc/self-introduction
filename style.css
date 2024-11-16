@@ -1022,6 +1022,11 @@ body main #career .sectionInner .careerTimelineList .careerTimelineItem::after {
     font-size: 8vw;
   }
 }
+@media screen and (max-width: 700px) {
+  body main #career .sectionInner .careerTimelineList .careerTimelineItem::after {
+    display: none !important;
+  }
+}
 body main #career .sectionInner .careerTimelineList .careerTimelineItem:last-child {
   padding-bottom: 0;
 }
@@ -1034,22 +1039,28 @@ body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerT
 body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItemInner .careerTimelineEvent {
   font-size: 32px;
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(1)::after {
+@media screen and (max-width: 700px) {
+  body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItemInner .careerTimelineEvent {
+    font-size: 6vw;
+    font-weight: bold;
+  }
+}
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(1)::after {
   content: "🏝️";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(2)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(2)::after {
   content: "🏫";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(3)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(3)::after {
   content: "🗼";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(4)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(4)::after {
   content: "🖥️";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(5)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(5)::after {
   content: "🏢";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(6)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(6)::after {
   content: "✈️";
 }
 body main #works .sectionInner .worksCardArea {
