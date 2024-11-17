@@ -70,7 +70,7 @@ a {
     }
 
     @media screen and (max-width: $spBreakPoint) {
-        padding-inline: 16px;
+        padding-inline: 20px;
     }
 }
 
@@ -83,6 +83,10 @@ a {
         font-family: $fontSub;
         font-size: 64px;
         font-weight: bold;
+
+        @media screen and (max-width: $spBreakPoint) {
+            font-size: 9vw;
+        }
     }
 
 
