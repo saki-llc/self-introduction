@@ -44,7 +44,7 @@ body {
                 border-radius: 50vh;
                 background: #fff;
 
-                .currentItem {
+                #headerCurrentItemBg {
                     z-index: 12;
                     position: absolute;
                     left: 12px;
@@ -52,6 +52,9 @@ body {
                     height: calc(100% - 24px);
                     background: #000;
                     border-radius: 50vh;
+
+                    transition-duration: 0.8s;
+                    transition-timing-function: $easeInOutBack;
                 }
 
                 .headerNavItem {
@@ -64,6 +67,8 @@ body {
                     justify-content: center;
                     border-radius: 50vh;
 
+                    transition-duration: 0.5s;
+
                     &--current {
                         color: #fff;
                     }
@@ -72,8 +77,149 @@ body {
         }
     }
 
+    #hamburgerButton {
+        display: none;
+
+        @media screen and (max-width: $spBreakPoint) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 52px;
+            height: 52px;
+            z-index: 101;
+            border-radius: 50vh;
+            background: $colorMain;
+            border: 1px solid $colorMain;
+
+            transition-duration: 1s;
+            transition-timing-function: $easeInOutQuint;
+        }
+
+        .hamburgerButtonInner {
+            display: flex;
+            flex-direction: column;
+            align-items: start;
+            justify-content: center;
+            gap: 8px;
+
+            .hamburgerButtonLine {
+                height: 2px;
+                border-radius: 50vh;
+                background: #fff;
+
+                transition-duration: 1s;
+                transition-timing-function: $easeInOutQuint;
+
+                &:nth-child(1) {
+                    width: 16px;
+                }
+
+                &:nth-child(2) {
+                    width: 20px;
+                }
+
+                &:nth-child(3) {
+                    width: 24px;
+                }
+            }
+        }
+
+        &.hamburgerButton--opened {
+            background: #fff;
+            border-color: $colorBlack;
+
+            .hamburgerButtonLine {
+                background: $colorBlack;
+
+                &:nth-child(1) {
+                    transform: translateY(10px) rotate(45deg);
+                    width: 24px;
+                }
+
+                &:nth-child(2) {
+                    width: 0;
+                    opacity: 0;
+                }
+
+                &:nth-child(3) {
+                    transform: translateY(-10px) rotate(-45deg);
+                    width: 24px;
+                }
+            }
+        }
+    }
+
+    #globalNav {
+        display: none;
+        position: fixed;
+        z-index: 100;
+        width: 100%;
+        height: 100vh;
+        top: -100%;
+        left: 0;
+        align-items: center;
+        justify-content: center;
+        background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
+        background-size: 200% 200%;
+        animation: bgGradient 8s ease infinite;
+
+        transition-duration: 1s;
+        transition-timing-function: $easeInOutQuint;
+
+        @media screen and (max-width: $spBreakPoint) {
+            display: flex;
+        }
+
+        .globalNavList {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 28px;
+            font-size: 4.5vw;
+            font-weight: 500;
+
+            .globalNavBgNoise {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                opacity: 0.1;
+                filter: brightness(5);
+            }
+
+            .globalNavItem {
+                cursor: pointer;
+                width: 40%;
+                background: #fff;
+                padding-block: 6px;
+                border-radius: 50vh;
+                border: 1px solid $colorBlack;
+                text-align: center;
+            }
+        }
+    }
+
+    .globalNav--active {
+        top: 0 !important;
+    }
+
     main {
         margin-top: 160px;
+
+        @media screen and (max-width: $spBreakPoint) {
+            margin-top: 20px;
+        }
 
         #introduction {
 
@@ -94,7 +240,6 @@ body {
                 .introductionImageWrapper {
                     width: 50%;
                     height: auto;
-                    aspect-ratio: 1 / 1;
                     object-fit: cover;
 
                     @media screen and (max-width: $spBreakPoint) {
@@ -104,6 +249,7 @@ body {
                     img {
                         width: 100%;
                         height: 100%;
+                        aspect-ratio: 1 / 1;
                         object-fit: cover;
                         border-radius: $borderRadiusMain;
                     }
@@ -202,12 +348,27 @@ body {
 
                         @media screen and (max-width: $spBreakPoint) {
                             &::after {
-                                content: "🎥";
                                 position: absolute;
                                 top: 12px;
                                 right: 12px;
                                 font-size: 40px;
                                 line-height: 1;
+                            }
+
+                            &:nth-child(1)::after {
+                                content: "🎥";
+                            }
+
+                            &:nth-child(2)::after {
+                                content: "📱";
+                            }
+
+                            &:nth-child(3)::after {
+                                content: "🎓";
+                            }
+
+                            &:nth-child(4)::after {
+                                content: "🖥️";
                             }
                         }
 
@@ -356,20 +517,6 @@ body {
                 height: auto;
             }
 
-            @keyframes bgGradient {
-                0% {
-                    background-position: 0% 50%;
-                }
-
-                50% {
-                    background-position: 100% 50%;
-                }
-
-                100% {
-                    background-position: 0% 50%;
-                }
-            }
-
             .currentWorksBgNoise {
                 position: absolute;
                 top: 0;
@@ -416,7 +563,7 @@ body {
                     }
 
                     .currentWorksMainAreaLeft {
-                        width: auto;
+                        width: 120px;
                         height: 100%;
                         display: flex;
                         flex-direction: column;
@@ -426,10 +573,13 @@ body {
 
                         @media screen and (max-width: $tabletBreakPoint) {
                             flex-direction: row;
+                            width: 100%;
+                            height: 80px;
+                            gap: 24px;
                         }
 
 
-                        .currentJobLogoWrapper {
+                        .currentWorksLogoWrapper {
                             cursor: pointer;
                             width: 72px;
                             height: 72px;
@@ -441,6 +591,10 @@ body {
                             background: #fff;
                             border: 1px solid $colorBlack;
                             opacity: 0.5;
+
+                            transition-duration: 0.5s;
+                            transition-timing-function: $easeInOutQuint;
+
 
                             @media screen and (max-width: $tabletBreakPoint) {
                                 width: 52px;
@@ -455,7 +609,7 @@ body {
                             }
                         }
 
-                        .currentJobLogoWrapper.currentJobLogoWrapper--active {
+                        .currentWorksLogoWrapper.currentWorksLogoWrapper--active {
                             // cursor: default;
                             width: 120px;
                             height: 120px;
@@ -491,6 +645,9 @@ body {
 
                             &--active {
                                 display: flex;
+
+                                animation-name: fadeIn;
+                                animation-duration: 0.5s;
                             }
 
                             .currentWorksDetailTitle {
@@ -648,30 +805,30 @@ body {
                                 overflow-wrap: anywhere;
                             }
                         }
+                    }
 
-                        .careerTimelineItem:nth-child(1)::after {
-                            content: "🏝️";
-                        }
+                    .careerTimelineItem:nth-child(1)::after {
+                        content: "🏝️";
+                    }
 
-                        .careerTimelineItem:nth-child(2)::after {
-                            content: "🏫";
-                        }
+                    .careerTimelineItem:nth-child(2)::after {
+                        content: "🏫";
+                    }
 
-                        .careerTimelineItem:nth-child(3)::after {
-                            content: "🗼";
-                        }
+                    .careerTimelineItem:nth-child(3)::after {
+                        content: "🗼";
+                    }
 
-                        .careerTimelineItem:nth-child(4)::after {
-                            content: "🖥️";
-                        }
+                    .careerTimelineItem:nth-child(4)::after {
+                        content: "🖥️";
+                    }
 
-                        .careerTimelineItem:nth-child(5)::after {
-                            content: "🏢";
-                        }
+                    .careerTimelineItem:nth-child(5)::after {
+                        content: "🏢";
+                    }
 
-                        .careerTimelineItem:nth-child(6)::after {
-                            content: "✈️";
-                        }
+                    .careerTimelineItem:nth-child(6)::after {
+                        content: "✈️";
                     }
                 }
             }
@@ -704,6 +861,20 @@ body {
                         &--active {
                             pointer-events: auto;
                             transform: scale(1);
+
+                            animation-name: fadeIn;
+                            animation-duration: 0.5s;
+                            animation-timing-function: $easeInOutQuint;
+
+                            @keyframes fadeIn {
+                                0% {
+                                    opacity: 0;
+                                }
+
+                                100% {
+                                    opacity: 1;
+                                }
+                            }
                         }
 
                         .worksCardThumbnailWrapper {
@@ -753,6 +924,11 @@ body {
         justify-content: space-between;
         background: $colorBlack;
 
+        @media screen and (max-width: $spBreakPoint) {
+            height: auto;
+            gap: 40px;
+        }
+
         .sectionTitleGroup {
             color: #fff;
         }
@@ -760,10 +936,35 @@ body {
         .snsIconList {
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 40px;
+
+            @media screen and (max-width: $spBreakPoint) {
+                gap: 24px;
+            }
+
+            .snsIconItem {
+                img {
+                    width: 56px;
+                    aspect-ratio: 1 / 1;
+
+                    @media screen and (max-width: $spBreakPoint) {
+                        width: 40px;
+                    }
+                }
+            }
 
             .mailIconItem {
                 cursor: pointer;
+
+                img {
+                    width: 64px;
+                    aspect-ratio: auto;
+
+                    @media screen and (max-width: $spBreakPoint) {
+                        width: 46px;
+                    }
+                }
             }
         }
 

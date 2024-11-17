@@ -49,18 +49,38 @@
 
 <body>
     <header>
-        <div class="headerInner">
+        <nav class="headerInner">
             <ul class="headerNav">
-                <div class="currentItem"></div>
-                <li class="headerNavItem headerNavItem--current">自己紹介</li>
-                <li class="headerNavItem">できること</li>
-                <li class="headerNavItem">現在の仕事</li>
-                <li class="headerNavItem">キャリア</li>
-                <li class="headerNavItem">制作実績</li>
-                <li class="headerNavItem">連絡先</li>
+                <div id="headerCurrentItemBg"></div>
+                <li data-nthItem="0" data-target="#introduction" class="headerNavItem headerNavItem--current">自己紹介</li>
+                <li data-nthItem="1" data-target="#skills" class="headerNavItem">できること</li>
+                <li data-nthItem="2" data-target="#currentWorks" class="headerNavItem">現在の仕事</li>
+                <li data-nthItem="3" data-target="#career" class="headerNavItem">キャリア</li>
+                <li data-nthItem="4" data-target="#works" class="headerNavItem">制作実績</li>
+                <li data-nthItem="5" data-target="footer" class="headerNavItem">連絡先</li>
             </ul>
-        </div>
+        </nav>
     </header>
+
+    <div id="hamburgerButton" aria-expanded="false">
+        <div class="hamburgerButtonInner">
+            <span class="hamburgerButtonLine"></span>
+            <span class="hamburgerButtonLine"></span>
+            <span class="hamburgerButtonLine"></span>
+        </div>
+    </div>
+
+    <nav id="globalNav" aria-hidden="true">
+        <ul class="globalNavList">
+            <img src="assets/images/noise.jpg" alt="" class="globalNavBgNoise">
+            <li data-target="#introduction" class="globalNavItem">自己紹介</li>
+            <li data-target="#skills" class="globalNavItem">できること</li>
+            <li data-target="#currentWorks" class="globalNavItem">現在の仕事</li>
+            <li data-target="#career" class="globalNavItem">キャリア</li>
+            <li data-target="#works" class="globalNavItem">制作実績</li>
+            <li data-target="footer" class="globalNavItem">連絡先</li>
+        </ul>
+    </nav>
 
     <main>
         <div class="mainWrapper">
@@ -171,15 +191,15 @@
                     </hgroup>
                     <div class="currentWorksMainArea">
                         <div class="currentWorksMainAreaLeft">
-                            <div class="currentJobLogoWrapper currentJobLogoWrapper--active">
-                                <img src="assets/images/saki-logo.png" alt="合同会社Sakiのロゴ">
+                            <div class="currentWorksLogoWrapper currentWorksLogoWrapper--active">
+                                <img data-target="saki-llc" src="assets/images/saki-logo.png" alt="合同会社Sakiのロゴ">
                             </div>
-                            <div class="currentJobLogoWrapper">
-                                <img src="assets/images/imadoki-logo.png" alt="株式会社いまどきのロゴ">
+                            <div class="currentWorksLogoWrapper">
+                                <img data-target="imadoki-co" src="assets/images/imadoki-logo.png" alt="株式会社いまどきのロゴ">
                             </div>
                         </div>
                         <div class="currentWorksMainAreaRight">
-                            <div class="currentWorksDetail currentWorksDetail--active">
+                            <div id="saki-llc" class="currentWorksDetail currentWorksDetail--active">
                                 <h2 class="currentWorksDetailTitle"><span>合</span>同会社Saki</h2>
                                 <p class="currentWorksDetailDescription">
                                     合同会社Sakiで、<wbr>代表として経営をしています。<br><br>
@@ -200,10 +220,10 @@
                                     <span class="currentWorksLinkText"> Visit Website</span>
                                 </a>
                             </div>
-                            <div class="currentWorksDetail">
+                            <div id="imadoki-co" class="currentWorksDetail">
                                 <h2 class="currentWorksDetailTitle"><span>株</span>式会社いまどき</h2>
                                 <p class="currentWorksDetailDescription">
-                                    沖縄を拠点に活動する、株式会社いまどきの役員をしています<br>
+                                    沖縄を拠点に活動する、株式会社いまどきの役員をしています。<br>
                                     主な役割は制作の舵取り役です。<br><br>
                                     SNSのアカウント設計や交流会事業など、<br>
                                     スピード感のある企業で新しい挑戦ができて楽しんでいます！<br><br>
@@ -388,7 +408,7 @@
             <a href="https://www.facebook.com/fujisaki.wahei.7/" class="snsIconItem">
                 <img src="assets/images/facebook.png" alt="藤﨑 和平のFacebook">
             </a>
-            <a href="https://www.instagram.com/fujisaki_wahei/" class="snsIconItem">
+            <a href="https://www.instagram.com/gooddayfujisaki/" class="snsIconItem">
                 <img src="assets/images/instagram.png" alt="藤﨑 和平のInstagram">
             </a>
             <div class="snsIconItem mailIconItem">
@@ -398,7 +418,7 @@
         <small class="copyright">&copy; Fujisaki Wahei</small>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 
 </html>

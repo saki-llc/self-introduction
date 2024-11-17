@@ -410,6 +410,10 @@ body {
   }
 }
 
+.body--noScroll {
+  overflow: hidden;
+}
+
 h1,
 h2,
 h3 {
@@ -542,7 +546,7 @@ body header .headerInner .headerNav {
   border-radius: 50vh;
   background: #fff;
 }
-body header .headerInner .headerNav .currentItem {
+body header .headerInner .headerNav #headerCurrentItemBg {
   z-index: 12;
   position: absolute;
   left: 12px;
@@ -550,6 +554,8 @@ body header .headerInner .headerNav .currentItem {
   height: calc(100% - 24px);
   background: #000;
   border-radius: 50vh;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 body header .headerInner .headerNav .headerNavItem {
   z-index: 13;
@@ -560,12 +566,139 @@ body header .headerInner .headerNav .headerNavItem {
   align-items: center;
   justify-content: center;
   border-radius: 50vh;
+  transition-duration: 0.5s;
 }
 body header .headerInner .headerNav .headerNavItem--current {
   color: #fff;
 }
+body #hamburgerButton {
+  display: none;
+}
+@media screen and (max-width: 700px) {
+  body #hamburgerButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    z-index: 101;
+    border-radius: 50vh;
+    background: #0089A7;
+    border: 1px solid #0089A7;
+    transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  }
+}
+body #hamburgerButton .hamburgerButtonInner {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 8px;
+}
+body #hamburgerButton .hamburgerButtonInner .hamburgerButtonLine {
+  height: 2px;
+  border-radius: 50vh;
+  background: #fff;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+body #hamburgerButton .hamburgerButtonInner .hamburgerButtonLine:nth-child(1) {
+  width: 16px;
+}
+body #hamburgerButton .hamburgerButtonInner .hamburgerButtonLine:nth-child(2) {
+  width: 20px;
+}
+body #hamburgerButton .hamburgerButtonInner .hamburgerButtonLine:nth-child(3) {
+  width: 24px;
+}
+body #hamburgerButton.hamburgerButton--opened {
+  background: #fff;
+  border-color: #333;
+}
+body #hamburgerButton.hamburgerButton--opened .hamburgerButtonLine {
+  background: #333;
+}
+body #hamburgerButton.hamburgerButton--opened .hamburgerButtonLine:nth-child(1) {
+  transform: translateY(10px) rotate(45deg);
+  width: 24px;
+}
+body #hamburgerButton.hamburgerButton--opened .hamburgerButtonLine:nth-child(2) {
+  width: 0;
+  opacity: 0;
+}
+body #hamburgerButton.hamburgerButton--opened .hamburgerButtonLine:nth-child(3) {
+  transform: translateY(-10px) rotate(-45deg);
+  width: 24px;
+}
+body #globalNav {
+  display: none;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  height: 100vh;
+  top: -100%;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
+  background-size: 200% 200%;
+  animation: bgGradient 8s ease infinite;
+  transition-duration: 1s;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+@media screen and (max-width: 700px) {
+  body #globalNav {
+    display: flex;
+  }
+}
+body #globalNav .globalNavList {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  font-size: 4.5vw;
+  font-weight: 500;
+}
+body #globalNav .globalNavList .globalNavBgNoise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  opacity: 0.1;
+  filter: brightness(5);
+}
+body #globalNav .globalNavList .globalNavItem {
+  cursor: pointer;
+  width: 40%;
+  background: #fff;
+  padding-block: 6px;
+  border-radius: 50vh;
+  border: 1px solid #333;
+  text-align: center;
+}
+body .globalNav--active {
+  top: 0 !important;
+}
 body main {
   margin-top: 160px;
+}
+@media screen and (max-width: 700px) {
+  body main {
+    margin-top: 20px;
+  }
 }
 body main #introduction .sectionInner {
   padding-top: 0;
@@ -586,7 +719,6 @@ body main #introduction .sectionInner {
 body main #introduction .sectionInner .introductionImageWrapper {
   width: 50%;
   height: auto;
-  aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
 }
@@ -598,6 +730,7 @@ body main #introduction .sectionInner .introductionImageWrapper {
 body main #introduction .sectionInner .introductionImageWrapper img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 12px;
@@ -689,12 +822,23 @@ body main #skills .sectionInner .skillsCardArea .skillsCard {
 }
 @media screen and (max-width: 700px) {
   body main #skills .sectionInner .skillsCardArea .skillsCard::after {
-    content: "🎥";
     position: absolute;
     top: 12px;
     right: 12px;
     font-size: 40px;
     line-height: 1;
+  }
+  body main #skills .sectionInner .skillsCardArea .skillsCard:nth-child(1)::after {
+    content: "🎥";
+  }
+  body main #skills .sectionInner .skillsCardArea .skillsCard:nth-child(2)::after {
+    content: "📱";
+  }
+  body main #skills .sectionInner .skillsCardArea .skillsCard:nth-child(3)::after {
+    content: "🎓";
+  }
+  body main #skills .sectionInner .skillsCardArea .skillsCard:nth-child(4)::after {
+    content: "🖥️";
   }
 }
 body main #skills .sectionInner .skillsCardArea .skillsCard .skillsCardExperience {
@@ -827,17 +971,6 @@ body main #currentWorks {
     height: auto;
   }
 }
-@keyframes bgGradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 body main #currentWorks .currentWorksBgNoise {
   position: absolute;
   top: 0;
@@ -887,7 +1020,7 @@ body main #currentWorks .sectionInner .currentWorksMainArea {
   }
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft {
-  width: auto;
+  width: 120px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -898,9 +1031,12 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
 @media screen and (max-width: 900px) {
   body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft {
     flex-direction: row;
+    width: 100%;
+    height: 80px;
+    gap: 24px;
   }
 }
-body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper {
+body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper {
   cursor: pointer;
   width: 72px;
   height: 72px;
@@ -912,26 +1048,28 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   background: #fff;
   border: 1px solid #333;
   opacity: 0.5;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 }
 @media screen and (max-width: 900px) {
-  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper {
     width: 52px;
     height: 52px;
   }
 }
-body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper img {
+body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper img {
   width: 70%;
   aspect-ratio: 1/1;
   -o-object-fit: cover;
      object-fit: cover;
 }
-body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper.currentJobLogoWrapper--active {
+body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper.currentWorksLogoWrapper--active {
   width: 120px;
   height: 120px;
   opacity: 1;
 }
 @media screen and (max-width: 900px) {
-  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentJobLogoWrapper.currentJobLogoWrapper--active {
+  body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper.currentWorksLogoWrapper--active {
     width: 80px;
     height: 80px;
   }
@@ -961,6 +1099,8 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail--active {
   display: flex;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksDetailTitle {
   font-size: 64px;
@@ -1098,22 +1238,22 @@ body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerT
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(1)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(1)::after {
   content: "🏝️";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(2)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(2)::after {
   content: "🏫";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(3)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(3)::after {
   content: "🗼";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(4)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(4)::after {
   content: "🖥️";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(5)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(5)::after {
   content: "🏢";
 }
-body main #career .sectionInner .careerTimelineList .careerTimelineItem .careerTimelineItem:nth-child(6)::after {
+body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(6)::after {
   content: "✈️";
 }
 body main #works .sectionInner .worksCardArea {
@@ -1140,6 +1280,17 @@ body main #works .sectionInner .worksCardArea .worksCard {
 body main #works .sectionInner .worksCardArea .worksCard--active {
   pointer-events: auto;
   transform: scale(1);
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 body main #works .sectionInner .worksCardArea .worksCard .worksCardThumbnailWrapper {
   width: 100%;
@@ -1177,17 +1328,67 @@ body footer {
   justify-content: space-between;
   background: #333;
 }
+@media screen and (max-width: 700px) {
+  body footer {
+    height: auto;
+    gap: 40px;
+  }
+}
 body footer .sectionTitleGroup {
   color: #fff;
 }
 body footer .snsIconList {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 40px;
+}
+@media screen and (max-width: 700px) {
+  body footer .snsIconList {
+    gap: 24px;
+  }
+}
+body footer .snsIconList .snsIconItem img {
+  width: 56px;
+  aspect-ratio: 1/1;
+}
+@media screen and (max-width: 700px) {
+  body footer .snsIconList .snsIconItem img {
+    width: 40px;
+  }
 }
 body footer .snsIconList .mailIconItem {
   cursor: pointer;
 }
+body footer .snsIconList .mailIconItem img {
+  width: 64px;
+  aspect-ratio: auto;
+}
+@media screen and (max-width: 700px) {
+  body footer .snsIconList .mailIconItem img {
+    width: 46px;
+  }
+}
 body footer .copyright {
   color: #fff;
+}
+
+@keyframes bgGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }/*# sourceMappingURL=style.css.map */
