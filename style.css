@@ -571,7 +571,11 @@ body header .headerInner .headerNav .headerNavItem {
 body header .headerInner .headerNav .headerNavItem--current {
   color: #fff;
 }
+body header .headerInner .headerNav .headerNavItem:hover:not(.headerNavItem--current) {
+  background: rgba(0, 0, 0, 0.1);
+}
 body #hamburgerButton {
+  cursor: pointer;
   display: none;
 }
 @media screen and (max-width: 700px) {
@@ -955,8 +959,9 @@ body main #skills .sectionInner .skillsCardArea .skillsCard--web .skillsCardExpe
   background: #5BAE70;
 }
 body main #currentWorks {
+  overflow: auto;
   position: relative;
-  width: calc(100% - 48px);
+  width: calc(100% - 64px);
   height: calc(100vh - 48px);
   margin-inline: auto;
   background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
@@ -972,6 +977,8 @@ body main #currentWorks {
   }
 }
 body main #currentWorks .currentWorksBgNoise {
+  display: none;
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
@@ -1050,6 +1057,10 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   opacity: 0.5;
   transition-duration: 0.5s;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper:hover:not(.currentWorksLogoWrapper--active) {
+  transform: scale(1.2);
+  opacity: 1;
 }
 @media screen and (max-width: 900px) {
   body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaLeft .currentWorksLogoWrapper {
@@ -1161,8 +1172,19 @@ body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAre
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  background: #333;
+  background: #fff;
+  border: 1px solid #0089A7;
+  color: #333;
+  box-shadow: 0 8px 0 #0089A7;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksLink:hover {
+  background: #0089A7;
   color: #fff;
+  box-shadow: 0 0 0 #0089A7;
+  transform: translateY(8px);
+  box-shadow: none;
 }
 body main #currentWorks .sectionInner .currentWorksMainArea .currentWorksMainAreaRight .currentWorksDetail .currentWorksLink .currentWorksLinkText {
   font-weight: 600;
@@ -1369,8 +1391,111 @@ body footer .snsIconList .mailIconItem img {
     width: 46px;
   }
 }
+body footer .snsIconList .snsIconItem,
+body footer .snsIconList .mailIconItem {
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+}
+body footer .snsIconList .snsIconItem:hover,
+body footer .snsIconList .mailIconItem:hover {
+  transform: scale(1.2);
+}
 body footer .copyright {
   color: #fff;
+}
+body .mailModal {
+  z-index: 501;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 400px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid #333;
+  box-shadow: 0px 4px 0px 0px #333;
+  transition-duration: 0.8s;
+}
+@media screen and (max-width: 900px) {
+  body .mailModal {
+    height: 200px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body .mailModal {
+    width: 90%;
+    height: 160px;
+  }
+}
+body .mailModal--active {
+  display: flex;
+}
+body .mailModal .mailModalInner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+}
+@media screen and (max-width: 900px) {
+  body .mailModal .mailModalInner {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+}
+@media screen and (max-width: 700px) {
+  body .mailModal .mailModalInner {
+    gap: 8px;
+  }
+}
+body .mailModal .mailModalInner .mailModalAddress {
+  font-family: "Shrikhand", cursive;
+  font-size: 3vw;
+  font-weight: bold;
+}
+@media screen and (max-width: 700px) {
+  body .mailModal .mailModalInner .mailModalAddress {
+    font-size: 4.5vw;
+  }
+}
+body .mailModal .mailModalInner .mailModalAddress--copied {
+  color: #0089A7;
+  font-size: 7vw;
+}
+body .mailModal .mailModalInner .mailModalCopy {
+  cursor: pointer;
+  font-size: 40px;
+  font-weight: 500;
+  color: #0089A7;
+}
+@media screen and (max-width: 700px) {
+  body .mailModal .mailModalInner .mailModalCopy {
+    font-size: 32px;
+  }
+}
+body .mailModal .mailModalInner .mailModalCopy:active {
+  transform: scale(0.9);
+}
+body .mailModal .mailModalInner .mailModalCopy--copied {
+  display: none;
+}
+body .mailModalBg {
+  pointer-events: none;
+  z-index: 500;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0);
+  transition-duration: 0.8s;
+}
+body .mailModalBg--visible {
+  pointer-events: auto;
+  background: rgba(0, 137, 167, 0.7);
 }
 
 @keyframes bgGradient {

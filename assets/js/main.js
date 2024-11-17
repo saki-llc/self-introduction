@@ -9,7 +9,7 @@ globalNav = document.getElementById("globalNav");
   ハンバーガーボタンをクリックしたらナビゲーションを開く
 =============================================== */
 hamburgerButton.addEventListener("click", () => {
-    document.body.classList.toggle("body--noScroll");
+    // document.body.classList.toggle("body--noScroll");
     globalNav.classList.toggle("globalNav--active");
     if (globalNav.getAttribute("aria-hidden") === "true") {
         globalNav.setAttribute("aria-hidden", "false");
@@ -31,7 +31,7 @@ const globalNavItems = document.querySelectorAll(".globalNavItem");
 
 globalNavItems.forEach(eachItem => {
     eachItem.addEventListener("click", () => {
-        document.body.classList.toggle("body--noScroll");
+        // document.body.classList.toggle("body--noScroll");
 
         let targetSection = document.querySelector(eachItem.getAttribute("data-target"));
         let scrollAmount = targetSection.offsetTop;
@@ -161,4 +161,55 @@ currentWorksTab.forEach(eachTab => {
             targetContent.classList.add("currentWorksDetail--active");
         }
     });
+});
+
+/* ===============================================
+ * モーダル出現 + メールアドレスをクリップボードにコピー
+ =============================================== */
+mailIconItem = document.querySelector('.mailIconItem');
+
+mailIconItem.addEventListener('click', () => {
+    mailModal.classList.add('mailModal--active');
+    mailModalBg.classList.add('mailModalBg--visible');
+    // document.body.classList.toggle("body--noScroll");
+});
+
+// コピー
+mailModal = document.querySelector('.mailModal');
+mailModalAddress = document.querySelector('.mailModalAddress');
+mailModalCopy = document.querySelector('.mailModalCopy');
+mailModalBg = document.querySelector('.mailModalBg');
+
+mailModalCopy.addEventListener('click', function () {
+
+    navigator.clipboard.writeText('fujisakiwahei@gmail.com')
+
+        .then(() => {
+            mailModalAddress.textContent = 'Copied!';
+            mailModalAddress.classList.add('mailModalAddress--copied');
+            mailModalCopy.classList.add('mailModalCopy--copied');
+
+        })
+
+    setTimeout(() => {
+        mailModalBg.classList.remove('mailModalBg--visible');
+        mailModal.classList.remove('mailModal--active');
+        mailModalCopy.classList.remove('mailModalCopy--copied');
+    }, 1000);
+
+    setTimeout(() => {
+        mailModalAddress.textContent = 'fujisakiwahei@gmail.com';
+        mailModalAddress.classList.remove('mailModalAddress--copied');
+    }, 1500);
+});
+
+mailModalBg.addEventListener('click', () => {
+    mailModalBg.classList.remove('mailModalBg--visible');
+    mailModal.classList.remove('mailModal--active');
+    mailModalCopy.classList.remove('mailModalCopy--copied');
+
+    setTimeout(() => {
+        mailModalAddress.textContent = 'fujisakiwahei@gmail.com';
+        mailModalAddress.classList.remove('mailModalAddress--copied');
+    }, 1500);
 });
