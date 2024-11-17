@@ -173,7 +173,7 @@ body {
         background-size: 200% 200%;
         animation: bgGradient 8s ease infinite;
 
-        transition-duration: 1s;
+        transition-duration: 0.8s;
         transition-timing-function: $easeInOutQuint;
 
         @media screen and (max-width: $spBreakPoint) {
@@ -193,6 +193,7 @@ body {
             font-weight: 500;
 
             .globalNavBgNoise {
+                pointer-events: none;
                 position: absolute;
                 top: 0;
                 left: 0;

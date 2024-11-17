@@ -653,7 +653,7 @@ body #globalNav {
   background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
   background-size: 200% 200%;
   animation: bgGradient 8s ease infinite;
-  transition-duration: 1s;
+  transition-duration: 0.8s;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 }
 @media screen and (max-width: 700px) {
@@ -674,6 +674,7 @@ body #globalNav .globalNavList {
   font-weight: 500;
 }
 body #globalNav .globalNavList .globalNavBgNoise {
+  pointer-events: none;
   position: absolute;
   top: 0;
   left: 0;
