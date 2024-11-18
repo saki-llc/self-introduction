@@ -213,3 +213,33 @@ mailModalBg.addEventListener('click', () => {
         mailModalAddress.classList.remove('mailModalAddress--copied');
     }, 1500);
 });
+
+/* ===============================================
+ * Swiper
+ =============================================== */
+document.addEventListener('DOMContentLoaded', function () {
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        spaceBetween: 40,
+        speed: 800,
+        centeredSlides: true,
+        clickable: true,
+        slideToClickedSlide: true,
+        initialSlide: 1,
+        breakpoints: {
+            1432: {
+                slidesPerView: 1,
+                spaceBetween: 64,
+                allowTouchMove: false, // スワイプを無効にする
+                navigation: false, // ナビゲーションボタンを無効にする
+                pagination: false, // ページネーションを無効にする
+                clickable: false,
+                slideToClickedSlide: false,
+            },
+            700: {
+                spaceBetween: -40,
+                loop: false,
+            }
+        }
+    });
+});

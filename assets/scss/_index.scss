@@ -308,6 +308,8 @@ body {
 
                         .introductionProfile {
                             margin-top: 24px;
+                            word-break: keep-all;
+                            overflow-wrap: anywhere;
                         }
                     }
                 }
@@ -507,7 +509,6 @@ body {
         }
 
         #currentWorks {
-            overflow: auto;
             // clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
             position: relative;
             width: calc(100% - 64px);
@@ -861,15 +862,14 @@ body {
         }
 
         #works {
+            overflow: hidden;
+
             .sectionInner {
+                padding-bottom: 80px;
+
                 .worksCardArea {
-                    margin-top: 64px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: space-between;
 
                     .worksCard {
-                        pointer-events: none;
                         width: 40%;
                         height: auto;
                         display: flex;
@@ -881,230 +881,287 @@ body {
                         background: #fff;
                         border: 1px solid $colorBlack;
                         box-shadow: 0px 5px 0px 0px $colorBlack;
+                    }
 
-                        transform: scale(0.6);
+                    .worksCardThumbnailWrapper {
+                        width: 100%;
+                        height: auto;
+                        aspect-ratio: 16 / 9;
 
-                        &--active {
-                            pointer-events: auto;
-                            transform: scale(1);
-
-                            animation-name: fadeIn;
-                            animation-duration: 0.5s;
-                            animation-timing-function: $easeInOutQuint;
-
-                            @keyframes fadeIn {
-                                0% {
-                                    opacity: 0;
-                                }
-
-                                100% {
-                                    opacity: 1;
-                                }
-                            }
-                        }
-
-                        .worksCardThumbnailWrapper {
+                        .worksCardThumbnail {
                             width: 100%;
-                            height: auto;
+                            height: 100%;
                             aspect-ratio: 16 / 9;
-
-                            .worksCardThumbnail {
-                                width: 100%;
-                                height: 100%;
-                                aspect-ratio: 16 / 9;
-                                object-fit: cover;
-                                border-radius: $borderRadiusMain;
-                            }
+                            object-fit: cover;
+                            border-radius: $borderRadiusMain;
                         }
-
-                        .worksCardTitleArea {
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-
-                            .worksCardClientName {
-                                font-weight: bold;
-                                color: $colorMain;
-                            }
-
-                            .worksCardTitle {
-                                font-size: 32px;
-                                line-height: 1.5;
-                                text-align: center;
-                            }
-                        }
-
-                        .worksCardDescription {}
                     }
+
+                    .worksCardTitleArea {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+
+                        .worksCardClientName {
+                            font-weight: bold;
+                            color: $colorMain;
+                        }
+
+                        .worksCardTitle {
+                            font-size: 32px;
+                            line-height: 1.5;
+                            text-align: center;
+                        }
+                    }
+
+                    .worksCardDescription {}
                 }
             }
         }
     }
+}
 
-    footer {
-        height: 400px;
-        padding-block: 40px 16px;
+footer {
+    height: 400px;
+    padding-block: 40px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background: $colorBlack;
+
+    @media screen and (max-width: $spBreakPoint) {
+        height: auto;
+        gap: 40px;
+    }
+
+    .sectionTitleGroup {
+        color: #fff;
+    }
+
+    .snsIconList {
         display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        background: $colorBlack;
-
-        @media screen and (max-width: $spBreakPoint) {
-            height: auto;
-            gap: 40px;
-        }
-
-        .sectionTitleGroup {
-            color: #fff;
-        }
-
-        .snsIconList {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 40px;
-
-            @media screen and (max-width: $spBreakPoint) {
-                gap: 24px;
-            }
-
-            .snsIconItem {
-                img {
-                    width: 56px;
-                    aspect-ratio: 1 / 1;
-
-                    @media screen and (max-width: $spBreakPoint) {
-                        width: 40px;
-                    }
-                }
-            }
-
-            .mailIconItem {
-                cursor: pointer;
-
-                img {
-                    width: 64px;
-                    aspect-ratio: auto;
-
-                    @media screen and (max-width: $spBreakPoint) {
-                        width: 46px;
-                    }
-                }
-            }
-
-            .snsIconItem,
-            .mailIconItem {
-                transition-duration: 0.3s;
-                transition-timing-function: $easeInOutQuint;
-            }
-
-            .snsIconItem:hover,
-            .mailIconItem:hover {
-                transform: scale(1.2);
-            }
-        }
-
-        .copyright {
-            color: #fff;
-        }
-    }
-
-    .mailModal {
-        z-index: 501;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 80%;
-        height: 400px;
-        display: none;
         align-items: center;
         justify-content: center;
-        border-radius: $borderRadiusMain;
-        background: #fff;
-        border: 1px solid $colorBlack;
-        box-shadow: 0px 4px 0px 0px $colorBlack;
-        transition-duration: 0.8s;
+        gap: 40px;
+
+        @media screen and (max-width: $spBreakPoint) {
+            gap: 24px;
+        }
+
+        .snsIconItem {
+            img {
+                width: 56px;
+                aspect-ratio: 1 / 1;
+
+                @media screen and (max-width: $spBreakPoint) {
+                    width: 40px;
+                }
+            }
+        }
+
+        .mailIconItem {
+            cursor: pointer;
+
+            img {
+                width: 64px;
+                aspect-ratio: auto;
+
+                @media screen and (max-width: $spBreakPoint) {
+                    width: 46px;
+                }
+            }
+        }
+
+        .snsIconItem,
+        .mailIconItem {
+            transition-duration: 0.3s;
+            transition-timing-function: $easeInOutQuint;
+        }
+
+        .snsIconItem:hover,
+        .mailIconItem:hover {
+            transform: scale(1.2);
+        }
+    }
+
+    .copyright {
+        color: #fff;
+    }
+}
+
+.mailModal {
+    z-index: 501;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 400px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: $borderRadiusMain;
+    background: #fff;
+    border: 1px solid $colorBlack;
+    box-shadow: 0px 4px 0px 0px $colorBlack;
+    transition-duration: 0.8s;
+
+    @media screen and (max-width: $tabletBreakPoint) {
+        height: 200px;
+    }
+
+    @media screen and (max-width: $spBreakPoint) {
+        width: 90%;
+        height: 160px;
+    }
+
+    &--active {
+        display: flex;
+    }
+
+    .mailModalInner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
 
         @media screen and (max-width: $tabletBreakPoint) {
-            height: 200px;
+            flex-direction: column-reverse;
+            gap: 16px;
         }
 
         @media screen and (max-width: $spBreakPoint) {
-            width: 90%;
-            height: 160px;
+            gap: 8px;
         }
 
-        &--active {
-            display: flex;
-        }
-
-        .mailModalInner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-
-            @media screen and (max-width: $tabletBreakPoint) {
-                flex-direction: column-reverse;
-                gap: 16px;
-            }
+        .mailModalAddress {
+            font-family: $fontSub;
+            font-size: 3vw;
+            font-weight: bold;
 
             @media screen and (max-width: $spBreakPoint) {
-                gap: 8px;
+                font-size: 4.5vw;
             }
 
-            .mailModalAddress {
-                font-family: $fontSub;
-                font-size: 3vw;
-                font-weight: bold;
+            &--copied {
+                color: #0089A7;
+                font-size: 7vw;
+            }
+        }
 
-                @media screen and (max-width: $spBreakPoint) {
-                    font-size: 4.5vw;
-                }
+        .mailModalCopy {
+            cursor: pointer;
+            font-size: 40px;
+            font-weight: 500;
+            color: $colorMain;
 
-                &--copied {
-                    color: #0089A7;
-                    font-size: 7vw;
-                }
+            @media screen and (max-width: $spBreakPoint) {
+                font-size: 32px;
             }
 
-            .mailModalCopy {
-                cursor: pointer;
-                font-size: 40px;
-                font-weight: 500;
-                color: $colorMain;
+            &:active {
+                transform: scale(0.9);
+            }
 
-                @media screen and (max-width: $spBreakPoint) {
-                    font-size: 32px;
-                }
-
-                &:active {
-                    transform: scale(0.9);
-                }
-
-                &--copied {
-                    display: none;
-                }
+            &--copied {
+                display: none;
             }
         }
     }
+}
 
-    .mailModalBg {
-        pointer-events: none;
-        z-index: 500;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: rgba(0, 0, 0, 0);
-        transition-duration: 0.8s;
+.mailModalBg {
+    pointer-events: none;
+    z-index: 500;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    transition-duration: 0.8s;
+}
+
+.mailModalBg--visible {
+    pointer-events: auto;
+    background: rgba($colorMain, 0.7);
+}
+
+/* ===============================================
+ *  swiper
+ =============================================== */
+.swiper-container {
+    margin-top: 64px;
+    width: 425px;
+    margin-inline: auto;
+
+    @media screen and (max-width: $tabletBreakPoint) {
+        width: 60%;
+        max-width: 500px;
     }
 
-    .mailModalBg--visible {
-        pointer-events: auto;
-        background: rgba($colorMain, 0.7);
+    @media screen and (max-width: $spBreakPoint) {
+        width: 100%;
     }
+
+    .swiper-wrapper {
+
+        .swiper-slide {
+            @media screen and (max-width: $pcSmallBreakPoint) {
+                cursor: pointer;
+            }
+
+            transition-duration: 0.8s;
+            transition-timing-function: $easeInOutCubic;
+
+            iframe {
+                @media screen and (max-width: $pcSmallBreakPoint) {
+                    pointer-events: none;
+                }
+            }
+
+            &-active {
+                cursor: default;
+                transform: scale(1);
+                opacity: 1;
+
+                iframe {
+                    pointer-events: auto;
+                }
+            }
+        }
+
+        @media screen and (max-width: $pcSmallBreakPoint) and (min-width: $spBreakPoint) {
+
+            .swiper-slide {
+                transform-origin: center bottom;
+                opacity: 0.8;
+            }
+
+            .swiper-slide:first-child:not(.swiper-slide-active) {
+                transform: rotateZ(-8deg) scale(0.7);
+                opacity: 0.8;
+                ;
+            }
+
+            .swiper-slide:nth-child(2):not(.swiper-slide-active) {
+                transform: rotateZ(-8deg) scale(0.7);
+                opacity: 0.8;
+            }
+
+            .swiper-slide:last-child:not(.swiper-slide-active) {
+                transform: rotateZ(8deg) scale(0.7);
+                opacity: 0.8;
+                ;
+            }
+
+            .swiper-slide-active+.swiper-slide {
+                transform: rotateZ(8deg) scale(0.7) !important;
+                opacity: 0.8;
+            }
+
+        }
+    }
+
 }

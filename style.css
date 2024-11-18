@@ -785,6 +785,8 @@ body main #introduction .sectionInner .introductionTextAreaWrapper .introduction
 }
 body main #introduction .sectionInner .introductionTextAreaWrapper .introductionTextArea .introductionProfile {
   margin-top: 24px;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
 }
 body main #skills .sectionInner .skillsCardArea {
   margin-top: 64px;
@@ -960,7 +962,6 @@ body main #skills .sectionInner .skillsCardArea .skillsCard--web .skillsCardExpe
   background: #5BAE70;
 }
 body main #currentWorks {
-  overflow: auto;
   position: relative;
   width: calc(100% - 64px);
   height: calc(100vh - 48px);
@@ -1279,14 +1280,13 @@ body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-chil
 body main #career .sectionInner .careerTimelineList .careerTimelineItem:nth-child(6)::after {
   content: "✈️";
 }
-body main #works .sectionInner .worksCardArea {
-  margin-top: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+body main #works {
+  overflow: hidden;
+}
+body main #works .sectionInner {
+  padding-bottom: 80px;
 }
 body main #works .sectionInner .worksCardArea .worksCard {
-  pointer-events: none;
   width: 40%;
   height: auto;
   display: flex;
@@ -1298,29 +1298,13 @@ body main #works .sectionInner .worksCardArea .worksCard {
   background: #fff;
   border: 1px solid #333;
   box-shadow: 0px 5px 0px 0px #333;
-  transform: scale(0.6);
 }
-body main #works .sectionInner .worksCardArea .worksCard--active {
-  pointer-events: auto;
-  transform: scale(1);
-  animation-name: fadeIn;
-  animation-duration: 0.5s;
-  animation-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
-}
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-body main #works .sectionInner .worksCardArea .worksCard .worksCardThumbnailWrapper {
+body main #works .sectionInner .worksCardArea .worksCardThumbnailWrapper {
   width: 100%;
   height: auto;
   aspect-ratio: 16/9;
 }
-body main #works .sectionInner .worksCardArea .worksCard .worksCardThumbnailWrapper .worksCardThumbnail {
+body main #works .sectionInner .worksCardArea .worksCardThumbnailWrapper .worksCardThumbnail {
   width: 100%;
   height: 100%;
   aspect-ratio: 16/9;
@@ -1328,21 +1312,21 @@ body main #works .sectionInner .worksCardArea .worksCard .worksCardThumbnailWrap
      object-fit: cover;
   border-radius: 12px;
 }
-body main #works .sectionInner .worksCardArea .worksCard .worksCardTitleArea {
+body main #works .sectionInner .worksCardArea .worksCardTitleArea {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-body main #works .sectionInner .worksCardArea .worksCard .worksCardTitleArea .worksCardClientName {
+body main #works .sectionInner .worksCardArea .worksCardTitleArea .worksCardClientName {
   font-weight: bold;
   color: #0089A7;
 }
-body main #works .sectionInner .worksCardArea .worksCard .worksCardTitleArea .worksCardTitle {
+body main #works .sectionInner .worksCardArea .worksCardTitleArea .worksCardTitle {
   font-size: 32px;
   line-height: 1.5;
   text-align: center;
 }
-body footer {
+footer {
   height: 400px;
   padding-block: 40px 16px;
   display: flex;
@@ -1352,59 +1336,60 @@ body footer {
   background: #333;
 }
 @media screen and (max-width: 700px) {
-  body footer {
+  footer {
     height: auto;
     gap: 40px;
   }
 }
-body footer .sectionTitleGroup {
+footer .sectionTitleGroup {
   color: #fff;
 }
-body footer .snsIconList {
+footer .snsIconList {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 40px;
 }
 @media screen and (max-width: 700px) {
-  body footer .snsIconList {
+  footer .snsIconList {
     gap: 24px;
   }
 }
-body footer .snsIconList .snsIconItem img {
+footer .snsIconList .snsIconItem img {
   width: 56px;
   aspect-ratio: 1/1;
 }
 @media screen and (max-width: 700px) {
-  body footer .snsIconList .snsIconItem img {
+  footer .snsIconList .snsIconItem img {
     width: 40px;
   }
 }
-body footer .snsIconList .mailIconItem {
+footer .snsIconList .mailIconItem {
   cursor: pointer;
 }
-body footer .snsIconList .mailIconItem img {
+footer .snsIconList .mailIconItem img {
   width: 64px;
   aspect-ratio: auto;
 }
 @media screen and (max-width: 700px) {
-  body footer .snsIconList .mailIconItem img {
+  footer .snsIconList .mailIconItem img {
     width: 46px;
   }
 }
-body footer .snsIconList .snsIconItem,
-body footer .snsIconList .mailIconItem {
+footer .snsIconList .snsIconItem,
+footer .snsIconList .mailIconItem {
   transition-duration: 0.3s;
   transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
 }
-body footer .snsIconList .snsIconItem:hover,
-body footer .snsIconList .mailIconItem:hover {
+footer .snsIconList .snsIconItem:hover,
+footer .snsIconList .mailIconItem:hover {
   transform: scale(1.2);
 }
-body footer .copyright {
+footer .copyright {
   color: #fff;
 }
-body .mailModal {
+
+.mailModal {
   z-index: 501;
   position: fixed;
   top: 50%;
@@ -1422,68 +1407,69 @@ body .mailModal {
   transition-duration: 0.8s;
 }
 @media screen and (max-width: 900px) {
-  body .mailModal {
+  .mailModal {
     height: 200px;
   }
 }
 @media screen and (max-width: 700px) {
-  body .mailModal {
+  .mailModal {
     width: 90%;
     height: 160px;
   }
 }
-body .mailModal--active {
+.mailModal--active {
   display: flex;
 }
-body .mailModal .mailModalInner {
+.mailModal .mailModalInner {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 32px;
 }
 @media screen and (max-width: 900px) {
-  body .mailModal .mailModalInner {
+  .mailModal .mailModalInner {
     flex-direction: column-reverse;
     gap: 16px;
   }
 }
 @media screen and (max-width: 700px) {
-  body .mailModal .mailModalInner {
+  .mailModal .mailModalInner {
     gap: 8px;
   }
 }
-body .mailModal .mailModalInner .mailModalAddress {
+.mailModal .mailModalInner .mailModalAddress {
   font-family: "Shrikhand", cursive;
   font-size: 3vw;
   font-weight: bold;
 }
 @media screen and (max-width: 700px) {
-  body .mailModal .mailModalInner .mailModalAddress {
+  .mailModal .mailModalInner .mailModalAddress {
     font-size: 4.5vw;
   }
 }
-body .mailModal .mailModalInner .mailModalAddress--copied {
+.mailModal .mailModalInner .mailModalAddress--copied {
   color: #0089A7;
   font-size: 7vw;
 }
-body .mailModal .mailModalInner .mailModalCopy {
+.mailModal .mailModalInner .mailModalCopy {
   cursor: pointer;
   font-size: 40px;
   font-weight: 500;
   color: #0089A7;
 }
 @media screen and (max-width: 700px) {
-  body .mailModal .mailModalInner .mailModalCopy {
+  .mailModal .mailModalInner .mailModalCopy {
     font-size: 32px;
   }
 }
-body .mailModal .mailModalInner .mailModalCopy:active {
+.mailModal .mailModalInner .mailModalCopy:active {
   transform: scale(0.9);
 }
-body .mailModal .mailModalInner .mailModalCopy--copied {
+.mailModal .mailModalInner .mailModalCopy--copied {
   display: none;
 }
-body .mailModalBg {
+
+.mailModalBg {
   pointer-events: none;
   z-index: 500;
   position: fixed;
@@ -1494,9 +1480,74 @@ body .mailModalBg {
   background: rgba(0, 0, 0, 0);
   transition-duration: 0.8s;
 }
-body .mailModalBg--visible {
+
+.mailModalBg--visible {
   pointer-events: auto;
   background: rgba(0, 137, 167, 0.7);
+}
+
+/* ===============================================
+ *  swiper
+ =============================================== */
+.swiper-container {
+  margin-top: 64px;
+  width: 425px;
+  margin-inline: auto;
+}
+@media screen and (max-width: 900px) {
+  .swiper-container {
+    width: 60%;
+    max-width: 500px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .swiper-container {
+    width: 100%;
+  }
+}
+.swiper-container .swiper-wrapper .swiper-slide {
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+@media screen and (max-width: 1432px) {
+  .swiper-container .swiper-wrapper .swiper-slide {
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 1432px) {
+  .swiper-container .swiper-wrapper .swiper-slide iframe {
+    pointer-events: none;
+  }
+}
+.swiper-container .swiper-wrapper .swiper-slide-active {
+  cursor: default;
+  transform: scale(1);
+  opacity: 1;
+}
+.swiper-container .swiper-wrapper .swiper-slide-active iframe {
+  pointer-events: auto;
+}
+@media screen and (max-width: 1432px) and (min-width: 700px) {
+  .swiper-container .swiper-wrapper .swiper-slide {
+    transform-origin: center bottom;
+    opacity: 0.8;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide:first-child:not(.swiper-slide-active) {
+    transform: rotateZ(-8deg) scale(0.7);
+    opacity: 0.8;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide:nth-child(2):not(.swiper-slide-active) {
+    transform: rotateZ(-8deg) scale(0.7);
+    opacity: 0.8;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide:last-child:not(.swiper-slide-active) {
+    transform: rotateZ(8deg) scale(0.7);
+    opacity: 0.8;
+  }
+  .swiper-container .swiper-wrapper .swiper-slide-active + .swiper-slide {
+    transform: rotateZ(8deg) scale(0.7) !important;
+    opacity: 0.8;
+  }
 }
 
 @keyframes bgGradient {
