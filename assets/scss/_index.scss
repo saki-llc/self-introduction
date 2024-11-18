@@ -4,6 +4,7 @@
 body {
     background: $colorLightGray;
     font-family: $fontMain;
+    display: none;
 
     #loadingScreen {
         z-index: 1000;

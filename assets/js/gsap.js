@@ -3,6 +3,8 @@
  =============================================== */
 document.addEventListener("DOMContentLoaded", () => {
 
+    document.body.style.display = "initial";
+
     if (sessionStorage.getItem('visited') !== "true") {
         sessionStorage.setItem('visited', "true");
 

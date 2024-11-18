@@ -508,6 +508,7 @@ a {
 body {
   background: #f5f5f5;
   font-family: "Zen Kaku Gothic New", sans-serif;
+  display: none;
 }
 body #loadingScreen {
   z-index: 1000;
