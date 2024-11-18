@@ -60,53 +60,54 @@ let isAnimating = false; // アニメーション中かどうかをチェック�
 headerNavItems.forEach(eachNavItem => {
     eachNavItem.addEventListener("click", () => {
 
-        if (isAnimating) return; // アニメーション中は何もしない
+        if (!isAnimating) {
 
-        isAnimating = true; // アニメーション開始
+            isAnimating = true; // アニメーション開始
 
-        // 黒背景の位置を調整
-        let navItemWidth = eachNavItem.offsetWidth;
-        let navItemNth = eachNavItem.getAttribute("data-nthItem");
-        let bgLeftPosition = (navItemNth * navItemWidth + 12) + "px";
-        currentItemBg.style.left = bgLeftPosition;
+            // 黒背景の位置を調整
+            let navItemWidth = eachNavItem.offsetWidth;
+            let navItemNth = eachNavItem.getAttribute("data-nthItem");
+            let bgLeftPosition = (navItemNth * navItemWidth + 12) + "px";
+            currentItemBg.style.left = bgLeftPosition;
 
-        // テキストの色を変更
-        let currentItem = document.querySelector(".headerNavItem--current");
-        currentItem.classList.remove("headerNavItem--current");
-        eachNavItem.classList.add("headerNavItem--current");
+            // テキストの色を変更
+            let currentItem = document.querySelector(".headerNavItem--current");
+            currentItem.classList.remove("headerNavItem--current");
+            eachNavItem.classList.add("headerNavItem--current");
 
-        // ページ内スクロール
-        let targetSection = eachNavItem.getAttribute("data-target");
-        const headerHeight = document.querySelector("header").offsetHeight;
-        let scrollAmount = document.querySelector(targetSection).offsetTop + headerHeight - 24;
+            // ページ内スクロール
+            let targetSection = eachNavItem.getAttribute("data-target");
+            const headerHeight = document.querySelector("header").offsetHeight;
+            let scrollAmount = document.querySelector(targetSection).offsetTop + headerHeight - 24;
 
-        console.log(targetSection);
-        console.log(scrollAmount);
-
-        if (targetSection === "#currentWorks") {
+            console.log(targetSection);
             console.log(scrollAmount);
-            scrollAmount += 80;
-            console.log(scrollAmount);
-            window.scrollTo({
-                top: scrollAmount,
-                behavior: "smooth"
-            });
-        } else if (targetSection !== "#introduction") {
-            window.scrollTo({
-                top: scrollAmount,
-                behavior: "smooth"
-            });
-        } else {
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
+
+            if (targetSection === "#currentWorks") {
+                console.log(scrollAmount);
+                scrollAmount += 80;
+                console.log(scrollAmount);
+                window.scrollTo({
+                    top: scrollAmount,
+                    behavior: "smooth"
+                });
+            } else if (targetSection !== "#introduction") {
+                window.scrollTo({
+                    top: scrollAmount,
+                    behavior: "smooth"
+                });
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            }
+
+            // アニメーション終了後に再度有効化
+            setTimeout(() => {
+                isAnimating = false;
+            }, 1000); // アニメーションの時間に応じて調整
         }
-
-        // アニメーション終了後に再度有効化
-        setTimeout(() => {
-            isAnimating = false;
-        }, 1000); // アニメーションの時間に応じて調整
     });
 });
 
