@@ -12,7 +12,7 @@ body {
         left: 0;
         width: 100%;
         height: 100%;
-        display: flex;
+        display: none;
         align-items: center;
         justify-content: center;
         background: $colorBlack;
@@ -191,7 +191,7 @@ body {
         justify-content: center;
         background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
         background-size: 200% 200%;
-        animation: bgGradient 8s ease infinite;
+        animation: bgGradient 5s ease infinite;
 
         transition-duration: 0.8s;
         transition-timing-function: $easeInOutQuint;
@@ -536,7 +536,7 @@ body {
             margin-inline: auto;
             background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
             background-size: 200% 200%;
-            animation: bgGradient 8s ease infinite;
+            animation: bgGradient 5s ease infinite;
             border-radius: $borderRadiusMain;
             overflow: hidden;
 
@@ -943,12 +943,16 @@ body {
                     margin-top: 32px;
                     font-weight: 500;
                     font-size: 24px;
-                    display: flex;
+                    display: none;
                     align-items: center;
                     justify-content: center;
                     gap: 16px;
                     color: $colorMain;
                     line-height: 1;
+
+                    @media screen and (max-width: $spBreakPoint) {
+                        display: flex;
+                    }
 
                     &::before {
                         content: "<<<";
@@ -1205,10 +1209,11 @@ footer {
                 }
             }
 
+            // swiper固有のクラス
             &-active {
                 cursor: default;
                 transform: scale(1);
-                opacity: 1;
+                opacity: 1 !important;
 
                 iframe {
                     pointer-events: auto;

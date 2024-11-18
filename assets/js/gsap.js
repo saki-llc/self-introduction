@@ -2,49 +2,56 @@
  *  ローディングアニメーション
  =============================================== */
 document.addEventListener("DOMContentLoaded", () => {
-    const loadingScreen = document.getElementById("loadingScreen");
-    const loadingSpinner = document.querySelector(".loading-spinner");
-    const introductionImage = document.querySelector(".introductionImageWrapper");
-    const introductionTextArea = document.querySelector(".introductionTextArea");
 
-    const timeLineLoading = gsap.timeline()
-    timeLineLoading
-        .from(loadingSpinner, {
-            duration: 1,
-            transform: "translateY(50px)",
-            opacity: 0,
-            ease: "power2.inOut",
-        })
-        .to(loadingSpinner, {
-            duration: 0.3,
-            scale: 1.5,
-            ease: "power2.inOut",
-        })
-        .to(loadingSpinner, {
-            duration: 0.5,
-            scale: 0,
-            ease: "power2.inOut",
-        },)
-        .to(loadingScreen, {
-            duration: 0.6,
-            opacity: 0,
-            ease: "power2.inOut",
-        }, "<0.3")
-        .from(introductionImage, {
-            transform: "translateY(100px)",
-            duration: 0.8,
-            opacity: 0,
-            ease: "power2.inOut",
-        }, "<")
-        .from(introductionTextArea, {
-            transform: "translateX(-100px)",
-            duration: 1,
-            opacity: 0,
-            ease: "power2.inOut",
-            onComplete: () => {
-                loadingScreen.style.display = "none";
-            }
-        }, "<0.2")
+    if (sessionStorage.getItem('visited') !== "true") {
+        sessionStorage.setItem('visited', "true");
+
+        const loadingScreen = document.getElementById("loadingScreen");
+        const loadingSpinner = document.querySelector(".loading-spinner");
+        const introductionImage = document.querySelector(".introductionImageWrapper");
+        const introductionTextArea = document.querySelector(".introductionTextArea");
+
+        loadingScreen.style.display = "flex";
+
+        const timeLineLoading = gsap.timeline()
+        timeLineLoading
+            .from(loadingSpinner, {
+                duration: 1,
+                transform: "translateY(50px)",
+                opacity: 0,
+                ease: "power2.inOut",
+            })
+            .to(loadingSpinner, {
+                duration: 0.3,
+                scale: 1.5,
+                ease: "power2.inOut",
+            })
+            .to(loadingSpinner, {
+                duration: 0.5,
+                scale: 0,
+                ease: "power2.inOut",
+            },)
+            .to(loadingScreen, {
+                duration: 0.6,
+                opacity: 0,
+                ease: "power2.inOut",
+            }, "<0.3")
+            .from(introductionImage, {
+                transform: "translateY(100px)",
+                duration: 0.8,
+                opacity: 0,
+                ease: "power2.inOut",
+            }, "<")
+            .from(introductionTextArea, {
+                transform: "translateX(-100px)",
+                duration: 1,
+                opacity: 0,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    loadingScreen.style.display = "none";
+                }
+            }, "<0.2")
+    }
 });
 
 /* ===============================================
@@ -191,20 +198,3 @@ const timeLineWorksCard = gsap.timeline({
         start: "top 60%",
     }
 })
-
-timeLineWorksCard
-    .from(worksCard1, {
-        duration: 1,
-        opacity: 0,
-        ease: "power2.inOut",
-    },)
-    .from(worksCard2, {
-        duration: 1,
-        opacity: 0,
-        ease: "power2.inOut",
-    }, "<0.1")
-    .from(worksCard3, {
-        duration: 1,
-        opacity: 0,
-        ease: "power2.inOut",
-    }, "<0.1")
