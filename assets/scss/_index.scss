@@ -906,6 +906,11 @@ body {
                         width: 100%;
                         height: auto;
                         aspect-ratio: 16 / 9;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: $borderRadiusMain;
+                        background: $colorLightGray;
 
                         .worksCardThumbnail {
                             width: 100%;
@@ -913,6 +918,12 @@ body {
                             aspect-ratio: 16 / 9;
                             object-fit: cover;
                             border-radius: $borderRadiusMain;
+                        }
+
+                        .worksCardThumbnailLogo {
+                            width: auto;
+                            height: auto;
+                            aspect-ratio: 1 / 1;
                         }
                     }
 
