@@ -70,6 +70,9 @@ sectionTitles.forEach(sectionTitle => {
         scrollTrigger: {
             trigger: sectionTitle,
             start: "top 80%",
+        },
+        onComplete: () => {
+            console.log("complete-title");
         }
     });
 });
@@ -88,6 +91,9 @@ const timeLineSkillsCard = gsap.timeline({
     scrollTrigger: {
         trigger: skillsCard0,
         start: "top 70%",
+    },
+    onComplete: () => {
+        console.log("complete-skillsCard");
     }
 })
 
@@ -128,6 +134,9 @@ const timeLineCurrentWork = gsap.timeline({
     scrollTrigger: {
         trigger: currentWork,
         start: "top 80%",
+    },
+    onComplete: () => {
+        console.log("complete-currentWork");
     }
 })
 
@@ -165,6 +174,9 @@ careerTimelineItem.forEach(eachCareerTimelineItem => {
         scrollTrigger: {
             trigger: eachCareerTimelineItem,
             start: "top 50%",
+        },
+        onComplete: () => {
+            console.log("complete-careerTimelineItem");
         }
     })
 })
@@ -181,6 +193,9 @@ gsap.from(careerHighlightItem, {
     scrollTrigger: {
         trigger: careerHighlightList,
         start: "top 70%",
+    },
+    onComplete: () => {
+        console.log("complete-careerHighlightItem");
     }
 })
 
@@ -198,5 +213,8 @@ const timeLineWorksCard = gsap.timeline({
     scrollTrigger: {
         trigger: worksCard1,
         start: "top 60%",
+    },
+    onComplete: () => {
+        console.log("complete-worksCard");
     }
 })
