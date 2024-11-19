@@ -83,15 +83,7 @@ headerNavItems.forEach(eachNavItem => {
             console.log(targetSection);
             console.log(scrollAmount);
 
-            if (targetSection === "#currentWorks") {
-                console.log(scrollAmount);
-                scrollAmount += 80;
-                console.log(scrollAmount);
-                window.scrollTo({
-                    top: scrollAmount,
-                    behavior: "smooth"
-                });
-            } else if (targetSection !== "#introduction") {
+            if (targetSection !== "#introduction") {
                 window.scrollTo({
                     top: scrollAmount,
                     behavior: "smooth"
