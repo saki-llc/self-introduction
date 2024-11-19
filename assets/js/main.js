@@ -80,9 +80,6 @@ headerNavItems.forEach(eachNavItem => {
             const headerHeight = document.querySelector("header").offsetHeight;
             let scrollAmount = document.querySelector(targetSection).offsetTop + headerHeight - 24;
 
-            console.log(targetSection);
-            console.log(scrollAmount);
-
             if (targetSection !== "#introduction") {
                 window.scrollTo({
                     top: scrollAmount,
