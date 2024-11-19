@@ -533,7 +533,7 @@ body {
             // clip-path: polygon(0% 5%, 100% 0%, 100% 95%, 0% 100%);
             position: relative;
             width: calc(100% - 64px);
-            height: calc(100vh - 48px);
+            height: auto;
             margin-inline: auto;
             background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
             background-size: 200% 200%;
@@ -543,7 +543,6 @@ body {
 
             @media screen and (max-width: $spBreakPoint) {
                 width: calc(100% - 16px);
-                height: auto;
             }
 
             .currentWorksBgNoise {
@@ -565,7 +564,6 @@ body {
                 gap: 40px;
                 width: calc(100% - 120px);
                 height: 100%;
-                padding-top: 140px;
                 z-index: 1;
 
                 @media screen and (max-width: $pcSmallBreakPoint) {
@@ -575,7 +573,6 @@ body {
                 @media screen and (max-width: $spBreakPoint) {
                     width: calc(100% - 24px);
                     padding-inline: 0;
-                    padding-top: 40px;
                     gap: 24px;
                 }
 

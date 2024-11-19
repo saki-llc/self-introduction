@@ -986,7 +986,7 @@ body main #skills .sectionInner .skillsCardArea .skillsCard--web .skillsCardExpe
 body main #currentWorks {
   position: relative;
   width: calc(100% - 64px);
-  height: calc(100vh - 48px);
+  height: auto;
   margin-inline: auto;
   background: linear-gradient(45deg, #ebedee, #e0c3fc, #8ec5fc, #ebedee);
   background-size: 200% 200%;
@@ -997,7 +997,6 @@ body main #currentWorks {
 @media screen and (max-width: 700px) {
   body main #currentWorks {
     width: calc(100% - 16px);
-    height: auto;
   }
 }
 body main #currentWorks .currentWorksBgNoise {
@@ -1019,7 +1018,6 @@ body main #currentWorks .sectionInner {
   gap: 40px;
   width: calc(100% - 120px);
   height: 100%;
-  padding-top: 140px;
   z-index: 1;
 }
 @media screen and (max-width: 1432px) {
@@ -1031,7 +1029,6 @@ body main #currentWorks .sectionInner {
   body main #currentWorks .sectionInner {
     width: calc(100% - 24px);
     padding-inline: 0;
-    padding-top: 40px;
     gap: 24px;
   }
 }
