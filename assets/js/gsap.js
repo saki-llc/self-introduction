@@ -201,20 +201,19 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===============================================
      *  制作実績
      =============================================== */
-    const works = document.querySelector("#works");
-    const worksCard = document.querySelectorAll(".worksCard");
 
-    const worksCard1 = worksCard[0];
-    const worksCard2 = worksCard[1];
-    const worksCard3 = worksCard[2];
+    gsap.set(".worksCard", {
+        autoAlpha: 0,
+    });
 
-    const timeLineWorksCard = gsap.timeline({
+    gsap.to(".worksCard", {
+        duration: 1,
+        autoAlpha: 1,
+        stagger: 0.2,
+        ease: "power2.inOut",
         scrollTrigger: {
-            trigger: worksCard1,
+            trigger: ".worksCardArea",
             start: "top 60%",
         },
-        onComplete: () => {
-            console.log("complete-worksCard");
-        }
     });
 });
