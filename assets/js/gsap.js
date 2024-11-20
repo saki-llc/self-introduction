@@ -100,26 +100,26 @@ document.addEventListener("DOMContentLoaded", () => {
         .from(skillsCard0, {
             transform: "translateX(-100px) rotate(-10deg)",
             duration: 1,
-            opacity: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
 
         },)
         .from(skillsCard1, {
             transform: "translateX(100px) rotate(10deg)",
             duration: 1,
-            opacity: 0,
+            auto: 0,
             ease: "power2.inOut",
         }, "<0.1")
         .from(skillsCard2, {
             transform: "translateX(-100px) rotate(-10deg)",
             duration: 1,
-            opacity: 0,
+            auto: 0,
             ease: "power2.inOut",
         }, "<0.1")
         .from(skillsCard3, {
             transform: "translateX(100px) rotate(10deg)",
             duration: 1,
-            opacity: 0,
+            auto: 0,
             ease: "power2.inOut",
         }, "<0.1")
 
@@ -143,19 +143,19 @@ document.addEventListener("DOMContentLoaded", () => {
         .from(currentWork, {
             transform: "translateX(50%)",
             duration: 1,
-            opacity: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         })
         .from(currentWorkLeft, {
             transform: "translateY(-120px)",
             duration: 1,
-            opacity: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         }, "<1")
         .from(currentWorkRight, {
             transform: "translateX(-200px)",
             duration: 1,
-            opacity: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         }, "<0.25")
 
