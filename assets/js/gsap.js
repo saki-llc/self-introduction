@@ -107,19 +107,19 @@ document.addEventListener("DOMContentLoaded", () => {
         .from(skillsCard1, {
             transform: "translateX(100px) rotate(10deg)",
             duration: 1,
-            auto: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         }, "<0.1")
         .from(skillsCard2, {
             transform: "translateX(-100px) rotate(-10deg)",
             duration: 1,
-            auto: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         }, "<0.1")
         .from(skillsCard3, {
             transform: "translateX(100px) rotate(10deg)",
             duration: 1,
-            auto: 0,
+            autoAlpha: 0,
             ease: "power2.inOut",
         }, "<0.1")
 
