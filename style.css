@@ -811,6 +811,9 @@ body main #introduction .sectionInner .introductionTextAreaWrapper .introduction
   word-break: keep-all;
   overflow-wrap: anywhere;
 }
+body main #skills {
+  overflow-x: hidden;
+}
 body main #skills .sectionInner .skillsCardArea {
   margin-top: 64px;
   display: flex;

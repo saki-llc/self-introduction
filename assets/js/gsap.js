@@ -1,3 +1,4 @@
+document.querySelectorAll('*').forEach(el => el.clientWidth > document.body.clientWidth ? console.log(el) : null);
 /* ===============================================
  *  ローディングアニメーション
  =============================================== */
@@ -141,7 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     timeLineCurrentWork
         .from(currentWork, {
-            transform: "translateX(50%)",
+            transform: "translateY(20%)",
             duration: 1,
             autoAlpha: 0,
             ease: "power2.inOut",

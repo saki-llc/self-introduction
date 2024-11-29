@@ -339,6 +339,8 @@ body {
         }
 
         #skills {
+            overflow-x: hidden;
+
             .sectionInner {
                 .skillsCardArea {
                     margin-top: 64px;
